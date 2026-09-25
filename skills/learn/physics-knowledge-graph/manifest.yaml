@@ -1,0 +1,36 @@
+name: physics-knowledge-graph
+category: learn
+role: role-d-physics-learning
+version: 1.1.0
+status: active
+locked: true
+distribution: portable
+package_export: true
+description: Role A handoff 驱动的受控图谱更新，支持 strong 多关系复核但不扩权
+triggers:
+  - 更新高中物理知识关系图谱
+  - 知识关系图谱维护
+  - 专题枢纽更新
+  - import handoff
+  - 图谱反向链接
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/update_graph.py
+    purpose: 校验 handoff、managed pages、hash 和授权并应用局部图谱变更
+runtime:
+  models: []
+  envs: []
+  requirements:
+    - ../_shared/requirements/requirements.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_only
+  models: never_inline
+authorization:
+  safe_apply: allowed_after_import_quality_gate
+  destructive_apply_requires: --teacher-authorized --allow-destructive
+model_profiles:
+  default: weak
+  supported: [weak, strong]
+last_verified: 2026-07-11

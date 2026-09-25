@@ -1,0 +1,79 @@
+name: physics-diagram-toolkit
+category: learn
+role: role-d-physics-learning
+version: 4.0.0
+status: active
+locked: true
+distribution: portable
+package_export: true
+description: request v2、各向同性 scene v3、视觉参考检索、题目/解析隔离和自动物理几何门禁
+triggers:
+  - 物理示意图生成
+  - 原创物理图
+  - 题目情境图
+  - 答案解析图
+  - 原图受力批注
+  - 运动学批注
+  - 画受力图
+  - 受力箭头
+  - 坐标系图像
+  - 函数图
+  - 实验数据图
+  - 实验数据折线
+  - x-t/v-t/a-t/F-t 图
+  - 矢量图
+  - 轨迹图
+  - 图上批注
+  - 把受力图写入题库
+  - 修复题库原图
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/render_diagram.py
+    purpose: 兼容 v1 低层 JSON 并确定性生成 SVG、PNG 和边界报告
+  - path: scripts/diagram_pipeline.py
+    purpose: prepare/render/verify/resume 的 hash 绑定可续跑流水线
+  - path: scripts/calibrate_image.py
+    purpose: EXIF 归一化、OpenCV 几何候选、坐标变换和临时网格
+  - path: scripts/scene_compiler.py
+    purpose: 将兼容 v2 或正式 v3 力学 scene graph 编译为分层 primitives 和几何断言
+  - path: scripts/geometry_validator.py
+    purpose: 验证角度、共点、接触、相切、尺寸和平抛轨迹并生成 geometry report
+  - path: scripts/render_plot.py
+    purpose: 用 Matplotlib 和受限 SymPy 表达式生成 PNG/SVG/PDF 物理图表
+  - path: scripts/diagram_common.py
+    purpose: 原子状态、路径边界、hash 和 task ID 公共工具
+runtime:
+  model_ids:
+    - qwen3-vl-embedding-2b
+    - physics-diagram-runtime
+    - noto-sans-cjk-sc-2.004
+  models:
+    - name: qwen3-vl-embedding-2b
+      path: ../../_shared/model-tools/runtime/models/huggingface/Qwen/Qwen3-VL-Embedding-2B
+      required: true
+      status: shared-runtime
+  envs:
+    - name: role-d-learning
+      path: ../../_shared/model-tools/runtime/envs/role-d-learning
+      required: true
+      status: shared-runtime
+    - name: visual-embedding-py311
+      path: ../../_shared/model-tools/runtime/envs/visual-embedding-py311
+      required: true
+      status: shared-runtime
+  requirements:
+    - ../_shared/requirements/requirements.txt
+    - ../../_shared/model-tools/requirements/role-d-learning-py311.txt
+    - ../../_shared/model-tools/requirements/visual-embedding-py311.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_only
+  models: never_inline
+model_profiles:
+  default: weak
+  supported: [weak, strong]
+authorization:
+  question_bank_apply_requires: --teacher-authorized
+  question_bank_writer: ../exercise-solution-curation/scripts/curate_exercise.py
+last_verified: 2026-07-20

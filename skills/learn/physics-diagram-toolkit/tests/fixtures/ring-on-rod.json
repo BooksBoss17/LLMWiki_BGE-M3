@@ -1,0 +1,31 @@
+{
+  "request_context": {
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "diagram_intent": {"facts": [{"id": "pq", "quote": "Q点比P点低0.24 m"}]}
+  },
+  "spec": {
+    "schema_version": 3,
+    "renderer": "scene",
+    "coordinate_space": "scene_units",
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "canvas": {"width": 900, "height": 650, "background": "#ffffff"},
+    "scene": {"width": 90, "height": 65, "padding_px": 24},
+    "surfaces": [{"id": "rod", "type": "rod", "origin": [58, 8], "length": 50, "angle_degrees": 90, "stroke_width": 4}],
+    "objects": [
+      {"id": "support", "type": "fixed_support", "position": [15, 32], "size": [5, 15], "label": "O"},
+      {"id": "ring", "type": "ring", "position": [58, 32], "size": [8, 8], "label": "P"}
+    ],
+    "connectors": [{"id": "spring", "type": "spring", "from": "support.connection", "to": "ring.left", "amplitude": 1.4}],
+    "landmarks": [
+      {"id": "rod-at-p", "type": "point", "position": [58, 32], "marker": "none"},
+      {"id": "q", "type": "point", "position": [58, 52], "marker": "dot", "label": "Q", "label_offset": [-5, -5]}
+    ],
+    "dimensions": [{"id": "pq", "type": "linear", "semantic_role": "given", "fact_id": "pq", "from": "ring.center", "to": "q.center", "offset": [10, 0], "extension_gaps": [5, 2], "label": "0.24 m"}],
+    "relations": [
+      {"id": "spring-attached", "type": "connected", "a": "spring.to", "b": "ring.left"},
+      {"id": "rod-through-ring", "type": "passes_through", "a": "ring.center", "b": "rod-at-p.center"}
+    ]
+  }
+}

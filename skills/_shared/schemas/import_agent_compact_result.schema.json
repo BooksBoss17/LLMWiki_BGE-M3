@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "repo://skills/_shared/schemas/import_agent_compact_result.schema.json",
+  "title": "LLMWiki import one-shot compact result v1",
+  "type": "object",
+  "additionalProperties": false,
+  "$comment": "The UTF-8 encoded result file is additionally limited to 16384 bytes by import_batch_contract.py.",
+  "required": ["schema_version", "task_id", "batch_id", "attempt_id", "attempt_no", "worker_instance_id", "queue_sha256", "queue_ordinal", "task_card_sha256", "owner_skill", "agent_role", "status", "summary", "issues", "artifacts"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "task_id": {"$ref": "#/$defs/id"},
+    "batch_id": {"$ref": "#/$defs/id"},
+    "attempt_id": {"$ref": "#/$defs/id"},
+    "attempt_no": {"enum": [1, 2]},
+    "worker_instance_id": {"$ref": "#/$defs/id"},
+    "queue_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "queue_ordinal": {"type": "integer", "minimum": 0},
+    "task_card_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "owner_skill": {"$ref": "#/$defs/ownerSkill"},
+    "agent_role": {"enum": ["reviewer", "executor", "verifier"]},
+    "status": {"enum": ["completed", "blocked", "failed", "abstained"]},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 2000},
+    "issues": {"type": "array", "maxItems": 20, "items": {"$ref": "#/$defs/issue"}},
+    "artifacts": {"type": "array", "maxItems": 20, "uniqueItems": true, "items": {"$ref": "#/$defs/artifactRef"}},
+    "metrics": {
+      "type": "object",
+      "additionalProperties": {"type": "integer", "minimum": 0},
+      "maxProperties": 20
+    },
+    "next_action": {"type": "string", "maxLength": 512}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]{0,127}$"},
+    "ownerSkill": {"enum": ["bemarkdown", "chinese-handwriting-formula-transcriber", "textbook-import", "standards-import", "exercise-bank-import", "student-data-import", "video-transcript-import"]},
+    "artifactRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path_id", "relative_path", "sha256", "size_bytes"],
+      "properties": {
+        "path_id": {"type": "string", "minLength": 1, "maxLength": 64},
+        "relative_path": {"type": "string", "minLength": 1, "maxLength": 1024},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "size_bytes": {"type": "integer", "minimum": 0},
+        "media_type": {"type": "string", "maxLength": 128}
+      }
+    },
+    "issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "severity", "message"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z0-9][a-z0-9._-]{0,63}$"},
+        "severity": {"enum": ["info", "warning", "error", "blocker"]},
+        "message": {"type": "string", "minLength": 1, "maxLength": 1000},
+        "evidence_refs": {"type": "array", "maxItems": 10, "items": {"$ref": "#/$defs/artifactRef"}}
+      }
+    }
+  }
+}

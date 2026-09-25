@@ -1,0 +1,4 @@
+interface:
+  display_name: "题库知识点标签"
+  short_description: "用稳定 kp_id 和固定提案 schema 维护题库标签"
+  default_prompt: "使用 $exercise-knowledge-tags 的 strong 档复核标签关系，严格按 canonical action 生成 dry-run 提案。"

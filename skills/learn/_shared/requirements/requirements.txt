@@ -1,0 +1,4 @@
+# Lightweight Role D tools. Models and virtual environments are installed locally.
+Pillow>=10.0
+PyMuPDF>=1.24
+PyYAML>=6.0

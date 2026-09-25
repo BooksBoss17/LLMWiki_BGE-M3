@@ -1,0 +1,6 @@
+interface:
+  display_name: "中文手写与公式转写"
+  short_description: "本地手写与公式 OCR 工作流"
+  default_prompt: "使用 $chinese-handwriting-formula-transcriber 安装本地 OCR 模型，并转写学生答题卡图像。"
+policy:
+  allow_implicit_invocation: true

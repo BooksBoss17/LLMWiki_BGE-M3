@@ -1,0 +1,39 @@
+name: textbook-import
+category: import
+role: role-a-import-maintenance
+version: 1.5.0
+status: active
+locked: true
+description: 教材导入：原件、转换、拆章、图片/OCR清理、Wiki+RAG
+triggers:
+  - 教材导入
+  - 课本入库
+  - 章节拆分
+  - OCR清理
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/check_and_fix.py
+    purpose: 教材 Markdown 安全校验、repair task 生成和显式复核替换
+  - path: ../bemarkdown/scripts/diagnose_pdf.py
+    purpose: 统一诊断 text/mixed/image PDF 和公式风险
+  - path: ../bemarkdown/scripts/combine_image_pdf_ocr.py
+    purpose: 扫描、混合和公式风险 PDF 的组合 OCR 入口
+  - path: ../bemarkdown/scripts/convert_pdf_with_marker.py
+    purpose: marker 候选 wrapper，负责当前 CLI、CUDA 和 ASCII staging
+  - path: ../../_shared/scripts/import_handoff.py
+    purpose: 创建并校验 Role A 到 Role D 的强制 import handoff
+  - path: ../../learn/physics-knowledge-graph/scripts/update_graph.py
+    purpose: 在最终 RAG 重建前应用或审批受控图谱增量
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-11

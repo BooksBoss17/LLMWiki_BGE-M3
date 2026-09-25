@@ -1,0 +1,39 @@
+name: physics-question-tutoring
+category: learn
+role: role-d-physics-learning
+version: 1.1.0
+status: active
+locked: true
+distribution: portable
+package_export: true
+description: 本地题目解析门禁、weak/strong 分层物理辅导、视觉复核和结构化响应校验
+triggers:
+  - 拍照识别并讲解物理题
+  - 学生拍题
+  - 题意确认
+  - 分层提示
+  - 讲解这道题
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/question_pipeline.py
+    purpose: 生成 question_parse.json、清除图片 EXIF、校验 strong 视觉复核并执行阶段门禁
+  - path: ../_shared/scripts/validate_role_d_response.py
+    purpose: 校验阶段响应 schema、答案泄露和数值表达式一致性
+runtime:
+  models: []
+  envs: []
+  requirements:
+    - ../_shared/requirements/requirements.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_only
+  models: never_inline
+privacy:
+  mode_default: student
+  output_root: ../../../output/learning_sessions
+  forbidden_data: [student_name, student_number, exam_number]
+model_profiles:
+  default: weak
+  supported: [weak, strong]
+last_verified: 2026-07-11

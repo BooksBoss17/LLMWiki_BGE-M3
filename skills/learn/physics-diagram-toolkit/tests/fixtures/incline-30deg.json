@@ -1,0 +1,25 @@
+{
+  "request_context": {
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "diagram_intent": {"facts": [{"id": "angle", "quote": "斜面倾角为30°"}]}
+  },
+  "spec": {
+    "schema_version": 3,
+    "renderer": "scene",
+    "coordinate_space": "scene_units",
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "canvas": {"width": 900, "height": 600, "background": "#ffffff"},
+    "scene": {"width": 100, "height": 70, "padding_px": 24},
+    "surfaces": [{"id": "incline", "type": "incline", "origin": [12, 56], "length": 72, "angle_degrees": -30}],
+    "objects": [
+      {"id": "support", "type": "fixed_support", "position": "incline.start", "size": [5, 14], "angle_degrees": -30},
+      {"id": "block", "type": "block", "size": [14, 9], "on_surface": {"surface": "incline", "fraction": 0.58}, "label": "A"}
+    ],
+    "dimensions": [
+      {"id": "incline-angle", "type": "angular", "semantic_role": "given", "fact_id": "angle", "vertex": "incline.start", "ray_a": [32, 56], "ray_b": "incline.end", "value_degrees": 30, "label": "30°", "radius": 6, "draw_rays": ["a"]}
+    ],
+    "relations": [{"id": "block-parallel", "type": "parallel", "a": "block.direction", "b": "incline.direction"}]
+  }
+}

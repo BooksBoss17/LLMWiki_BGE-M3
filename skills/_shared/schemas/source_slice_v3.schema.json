@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Source slice v3",
+  "type": "object",
+  "required": ["schema_version", "kind", "question_id", "source_sha256", "locator", "artifact_ref"],
+  "properties": {
+    "schema_version": {"const": 3},
+    "kind": {"const": "source_slice"},
+    "question_id": {"type": "string", "minLength": 1},
+    "source_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "locator": {
+      "type": "object",
+      "required": ["type", "coordinate_space"],
+      "properties": {
+        "type": {"type": "string", "minLength": 1},
+        "coordinate_space": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "artifact_ref": {"$ref": "#/$defs/file_ref"}
+  },
+  "additionalProperties": true,
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  }
+}

@@ -1,0 +1,3 @@
+assessment_id,class_id,term_id,title,assessment_type,assessed_on,max_score,student_code,total_score,Q1_score,Q1_max_score,Q1_question_id,Q1_kp_id,Q1_kp_title,Q1_wiki_path,Q2_score,Q2_max_score,Q2_question_id,Q2_kp_id,Q2_kp_title,Q2_wiki_path
+demo_assess_csv_001,demo_class_001,demo_term_2026_spring,合成CSV月考,monthly,2026-04-10,14,SYN001,12,5,6,q_force_csv_001,kp_force_analysis,受力分析,LLMWiki/concepts/受力分析.md,7,8,q_newton_csv_001,kp_newton_second,牛顿第二定律,LLMWiki/concepts/牛顿第二定律.md
+demo_assess_csv_001,demo_class_001,demo_term_2026_spring,合成CSV月考,monthly,2026-04-10,14,SYN002,9,4,6,q_force_csv_001,kp_force_analysis,受力分析,LLMWiki/concepts/受力分析.md,5,8,q_newton_csv_001,kp_newton_second,牛顿第二定律,LLMWiki/concepts/牛顿第二定律.md

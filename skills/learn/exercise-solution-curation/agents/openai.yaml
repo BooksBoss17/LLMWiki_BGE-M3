@@ -1,0 +1,4 @@
+interface:
+  display_name: "题库解析维护"
+  short_description: "用提案、哈希和教师授权安全维护题干、答案、详解及题图"
+  default_prompt: "使用 $exercise-solution-curation 的 strong curator 档完整校对题干、答案、详解和题图；长任务先 claim 一个 campaign 批次，只处理任务卡内最多 6 题，按 v2 schema 生成提案并先 dry-run，记录 handoff 后停止。"

@@ -1,0 +1,89 @@
+# LLMWiki_BGE-M3 Git policy: track framework + Markdown, not generated assets.
+
+# Python/runtime noise
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+
+# Teaching RAG runtime, model, and generated index outputs
+BGE-M3/runtime/
+BGE-M3/scripts/__pycache__/
+BGE-M3/debug_new_chunks.json
+
+# StudentDataSQL runtime data (schema/scripts/templates are tracked)
+StudentDataSQL/runtime/
+StudentDataSQL/**/*.sqlite3
+StudentDataSQL/**/*.sqlite3-wal
+StudentDataSQL/**/*.sqlite3-shm
+StudentDataSQL/**/*.db
+
+# Skill runtime assets and generated caches
+skills/**/runtime/
+skills/**/.runtime/
+skills/**/.venvs/
+skills/**/models/
+skills/_shared/model-tools/runtime/
+skills/_ops/runtime/
+skills/**/__pycache__/
+skills/**/*.pyc
+
+# Archived/migrating skill material is not an active call surface
+skills/_archive/
+skills/_incoming/
+
+# Raw source originals and temporary work
+source-library/*
+!source-library/README.md
+!source-library/.gitkeep
+LLMWiki/runtime/
+output/
+tmp/
+
+# Knowledge-base media is preserved on disk but not versioned in v1
+raw/**/media/
+LLMWiki/**/media/
+LLMWiki/**/*.jpg
+LLMWiki/**/*.jpeg
+LLMWiki/**/*.png
+LLMWiki/**/*.gif
+LLMWiki/**/*.webp
+
+# Office/PDF/raw binary source formats
+*.doc
+*.docx
+*.ppt
+*.pptx
+*.xls
+*.xlsx
+*.pdf
+*.mp4
+*.mov
+*.mkv
+*.mp3
+*.wav
+
+# Local OS/editor files
+Thumbs.db
+Desktop.ini
+desktop.ini
+.DS_Store
+LLMWiki/.obsidian/workspace*.json
+.vscode/
+.idea/
+
+# Project-local virtual environments anywhere
+.venv/
+venv/
+
+# Secrets / local env files (never commit)
+.env
+.env.*
+*.local.yaml
+
+# HF download leftovers
+*.incomplete

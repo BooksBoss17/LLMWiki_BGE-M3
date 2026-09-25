@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Checklist"
+  short_description: "Generate teaching knowledge checklists with exam-point methods."
+  default_prompt: "为指定教材或章节生成知识清单、考点分级和方法总结。"

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Agent Campaign Orchestration"
+  short_description: "Run resumable batches with verified fresh worker identities"
+  default_prompt: "Use $agent-campaign-orchestration to run a source-alignment wave before content curation: missing-slice queued items go through same-source A-only batches and fresh audit, then Role D curation reuses verified slices. Workers only write registered results; the main agent calls submit and reads compact submit.items. Use fork_context=false, exact producer roles, fresh auditors, and durable state."

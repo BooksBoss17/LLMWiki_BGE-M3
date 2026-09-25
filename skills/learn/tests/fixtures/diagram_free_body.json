@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "kind": "free_body",
+  "canvas": {
+    "width": 800,
+    "height": 600,
+    "background": "#ffffff"
+  },
+  "primitives": [
+    {
+      "type": "rect",
+      "x": 330,
+      "y": 270,
+      "width": 140,
+      "height": 70,
+      "stroke": "#222222",
+      "stroke_width": 4
+    },
+    {
+      "type": "arrow",
+      "x1": 400,
+      "y1": 270,
+      "x2": 400,
+      "y2": 120,
+      "label": "支持力 N",
+      "color": "#c62828",
+      "stroke_width": 4
+    },
+    {
+      "type": "arrow",
+      "x1": 400,
+      "y1": 340,
+      "x2": 400,
+      "y2": 500,
+      "label": "重力 mg",
+      "color": "#1565c0",
+      "stroke_width": 4
+    },
+    {
+      "type": "text",
+      "x": 372,
+      "y": 288,
+      "text": "物体",
+      "size": 24,
+      "color": "#111111"
+    }
+  ]
+}

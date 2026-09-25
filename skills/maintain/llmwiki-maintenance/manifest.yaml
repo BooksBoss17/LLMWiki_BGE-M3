@@ -1,0 +1,30 @@
+name: llmwiki-maintenance
+category: maintain
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: true
+description: Wiki 图谱健康、视频三页、raw 指针壳和 RAG gate
+triggers:
+  - Wiki维护
+  - 死链
+  - 孤立页
+  - 图谱健康
+  - 视频三页
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/audit_wiki_health.py
+    purpose: read-only Wiki graph, raw pointer, image, and video three-page audit
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

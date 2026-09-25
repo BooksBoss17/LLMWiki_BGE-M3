@@ -1,0 +1,18 @@
+---
+description: LLMWiki-BGE-M3 通用 agent 兼容规则
+alwaysApply: true
+---
+
+# LLMWiki-BGE-M3 Cursor 规则
+
+先读仓库根目录的 `AGENTS.md`，它是唯一权威入口。canonical skills 位于 `skills/`，路由注册表是 `skills/registry.yaml`。
+
+关键规则：
+
+- 用中文回复用户。
+- 不要一次性加载全部 skills。
+- 需要路由建议时运行：`python skills/_shared/scripts/skill_retriever.py --json "任务描述"`。
+- 只加载 `load_now[0]` 指向的 primary canonical `SKILL.md`；`queued` 只代表后续阶段。
+- 需要脚本、runtime 路径或 MCP/plugin 依赖时再读 `manifest.yaml`。
+- 没有明确授权时，不要修改锁定区。
+- Role A 负责知识内容导入维护；Role B 负责教师侧检索与教学输出；Role C 负责框架、router、兼容层和 Git；Role D 负责学生学习、题库解析、标签和受控知识图谱。

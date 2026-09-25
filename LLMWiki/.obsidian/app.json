@@ -1,0 +1,8 @@
+{
+  "attachmentFolderPath": "../raw/assets",
+  "newFileLocation": "current",
+  "useMarkdownLinks": false,
+  "newLinkFormat": "shortest",
+  "useTab": false,
+  "tabSize": 2
+}

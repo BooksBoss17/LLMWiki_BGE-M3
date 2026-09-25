@@ -1,0 +1,41 @@
+name: student-data-import
+category: import
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: false
+description: StudentDataSQL 名册、成绩单、小题分和答题卡 manifest 安全导入
+triggers:
+  - StudentDataSQL导入
+  - 学生数据导入
+  - 名册导入
+  - 成绩单导入
+  - 小题分导入
+  - 答题卡manifest导入
+  - 答题卡导入
+  - 学校成绩单
+  - 考试成绩导入
+  - StudentDataSQL真实数据导入
+  - 真实数据加密归拢
+  - 加密真实库导入
+  - imports清理
+  - seat-only
+  - 座位号导入
+entry_skill: SKILL.md
+scripts:
+  - ../../../StudentDataSQL/scripts/preprocess_roster_xlsx.py
+  - ../../../StudentDataSQL/scripts/preprocess_school_exam_xls.py
+  - ../../../StudentDataSQL/scripts/import_roster.py
+  - ../../../StudentDataSQL/scripts/import_exam_csv.py
+  - ../../../StudentDataSQL/scripts/import_answer_card_manifest.py
+  - ../../../StudentDataSQL/scripts/import_file_artifacts.py
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_root_studentdatasql_scripts
+  models: never_inline
+last_verified: 2026-07-06

@@ -1,0 +1,27 @@
+name: git-repository-management
+category: maintain
+role: role-c-kb-framework-admin
+version: 1.0.0
+status: active
+locked: false
+description: Git 初始化、.gitignore、提交规范、仓库健康和回滚检查
+triggers:
+  - git
+  - git仓库
+  - .gitignore
+  - 初始化仓库
+  - 提交
+  - commit
+  - 版本控制
+entry_skill: SKILL.md
+scripts: []
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

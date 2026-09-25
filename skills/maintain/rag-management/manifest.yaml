@@ -1,0 +1,29 @@
+name: rag-management
+category: maintain
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: true
+description: BGE-M3 RAG 入库/重建/检索脚本管理
+triggers:
+  - RAG重建
+  - BGE-M3
+  - FAISS
+  - 向量索引
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/rag_pipeline.py
+    purpose: see SKILL.md
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

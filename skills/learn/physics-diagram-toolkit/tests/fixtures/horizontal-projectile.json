@@ -1,0 +1,37 @@
+{
+  "request_context": {
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "diagram_intent": {
+      "facts": [
+        {"id": "v0", "quote": "小球以初速度v0水平抛出"},
+        {"id": "height", "quote": "抛出点距木板高度为h"},
+        {"id": "range", "quote": "水平距离为x"}
+      ]
+    }
+  },
+  "spec": {
+    "schema_version": 3,
+    "renderer": "scene",
+    "coordinate_space": "scene_units",
+    "purpose": "question",
+    "style_profile": "exam-monochrome",
+    "canvas": {"width": 1000, "height": 650, "background": "#ffffff"},
+    "scene": {"width": 100, "height": 65, "padding_px": 24},
+    "objects": [
+      {"id": "ball", "type": "sphere", "position": [20, 18], "size": [4, 4]},
+      {"id": "impact", "type": "impact_marker", "position": [82, 52], "size": [2.5, 2.5]}
+    ],
+    "vectors": [{"id": "v0", "kind": "velocity", "semantic_role": "given", "fact_id": "v0", "start": "ball.center", "direction": [1, 0], "length": 14, "label": "v₀"}],
+    "trajectories": [{"id": "path", "type": "projectile", "start": "ball.center", "end": "impact.center", "initial_direction": [1, 0]}],
+    "dimensions": [
+      {"id": "h", "type": "linear", "semantic_role": "given", "fact_id": "height", "from": [20, 18], "to": [20, 52], "offset": [-8, 0], "extension_gaps": [3, 0], "label": "h"},
+      {"id": "x", "type": "linear", "semantic_role": "given", "fact_id": "range", "from": [20, 52], "to": "impact.center", "offset": [0, 7], "extension_gaps": [0, 2.5], "label": "x"}
+    ],
+    "relations": [
+      {"id": "launch-common-point", "type": "connected", "a": "path.start", "b": "ball.center"},
+      {"id": "impact-common-point", "type": "connected", "a": "path.end", "b": "impact.center"},
+      {"id": "launch-tangent", "type": "tangent", "a": "path.start_direction", "b": "v0.direction"}
+    ]
+  }
+}

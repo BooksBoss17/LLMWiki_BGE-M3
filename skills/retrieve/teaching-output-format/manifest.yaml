@@ -1,0 +1,31 @@
+name: teaching-output-format
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: 教学输出格式、试卷格式、字体字号规范和 Word/PDF 交付 QA 规范
+triggers:
+  - 试卷格式
+  - 讲义格式
+  - 宋体
+  - Times New Roman
+  - 格式规范
+  - 交付规范
+  - 输出质量
+entry_skill: SKILL.md
+scripts:
+  []
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

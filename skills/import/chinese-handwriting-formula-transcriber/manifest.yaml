@@ -1,0 +1,83 @@
+name: chinese-handwriting-formula-transcriber
+category: import
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: false
+description: 本地中文手写、手写公式和学生答题卡 OCR 转写
+triggers:
+  - 中文手写转写
+  - 手写公式OCR
+  - 学生答题卡识别
+  - 答题卡OCR
+  - 物理公式LaTeX转写
+  - PaddleOCR-VL
+  - PP-OCRv6
+  - PP-FormulaNet
+  - TexTeller
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/doctor.ps1
+    purpose: 验证 uv、GPU、venv 导入、Paddle GPU、公式依赖导入和缓存路径
+  - path: scripts/setup_env.ps1
+    purpose: 创建 cli/paddle/formula 虚拟环境并安装已锁定的本地依赖
+  - path: scripts/download_models.ps1
+    purpose: 使用合成样本预热并验证本地 OCR/公式模型
+  - path: scripts/transcribe_auto.ps1
+    purpose: 对 q09-q16 答题卡执行完全自动转写，并输出保守的机器状态
+  - path: scripts/transcribe_image.ps1
+    purpose: 整页 OCR 冒烟转写入口
+  - path: scripts/transcribe_regions.ps1
+    purpose: 更底层的逐题裁剪图诊断
+  - path: scripts/_auto_prepare_inputs.py
+    purpose: 裁剪 q09-q16、去除红色批注，并生成长答题 student_answer_area 文本行裁剪图
+  - path: scripts/_auto_ranker.py
+    purpose: 结构模式解析、拒绝器、候选结果排序和 Markdown/JSON 转写写入
+  - path: scripts/_texteller_runtime.py
+    purpose: 通过 Python API 加载共享 TexTeller 快照并缓存运行时
+runtime:
+  tool_ids:
+    - uv-0.11.28
+    - python-3.11.15-win-x64
+  model_ids:
+    - paddleocr-vl-1.6
+    - pp-doclayoutv3
+    - pp-ocrv6-medium-det
+    - pp-ocrv6-medium-rec
+    - pp-formulanet-plus-l
+    - texteller-1.0.2
+  models:
+    - name: local-ocr-formula-model-cache
+      path: ../../_shared/model-tools/runtime/models
+      required: true
+      status: local-copied
+  envs:
+    - name: cli
+      path: ../../_shared/model-tools/runtime/envs/cli-py311
+      required: true
+      status: local-copied
+    - name: paddle
+      path: ../../_shared/model-tools/runtime/envs/paddle-py311
+      required: true
+      status: local-copied
+    - name: formula
+      path: ../../_shared/model-tools/runtime/envs/formula-py311
+      required: true
+      status: local-copied
+  requirements:
+    - ../../_shared/model-tools/requirements/cli-py311.txt
+    - ../../_shared/model-tools/requirements/paddle-py311.txt
+    - ../../_shared/model-tools/requirements/formula-py311.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_wrappers_only
+  models: never_inline
+privacy:
+  real_student_data: private_runs_only
+  private_root: %USERPROFILE%/Desktop/ocr_private_runs/chinese_handwriting_formula_transcriber
+  do_not_commit:
+    - ../../_shared/model-tools/runtime
+    - 真实学生原图
+    - OCR 裁剪图和转写正文
+last_verified: 2026-07-09

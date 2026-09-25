@@ -1,0 +1,670 @@
+# Generated catalog of skill-owned/shared/archived scripts.
+scripts:
+  - path: import/bemarkdown/scripts/run_bemarkdown_with_shared_runtime.bat
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: bat
+    notes: 清理注入 Python 环境变量并调用共享 OCR/公式环境。
+  - path: import/video-transcript-import/scripts/run_transcribe_with_shared_runtime.bat
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: bat
+    notes: 清理注入 Python 环境变量并调用共享 faster-whisper 环境与模型。
+  - path: import/bemarkdown/scripts/audit_math_conversion.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 只读审计 DOCX 中 OMML/EQ 的标准覆盖、阻断项和历史兼容候选。
+  - path: import/bemarkdown/scripts/batch_convert_all.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/batch_ocr_wmf.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/eq_field_to_latex.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/fix_chinese_subscripts.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 仅按明确旧 OCR 来源检测可疑下标 token 并生成视觉复核问题，不做上下文语义回填。
+  - path: import/bemarkdown/scripts/math_conversion_contract.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: OMML/EQ 统一转换结果、异常和 hash 绑定兼容覆盖契约。
+  - path: import/bemarkdown/scripts/omml_docx_to_md.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/omml_to_latex.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/pdf_text_to_md.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/diagnose_pdf.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: PDF 文本层、图片层、整页图片比例诊断，用于选择转换路径。
+  - path: import/bemarkdown/scripts/combine_image_pdf_ocr.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 图片型/扫描/公式风险 PDF 的组合 OCR 编排，读取 marker 与 transcriber 结构化候选，生成候选矩阵、冲突块、VLM 复核任务和质量报告。
+  - path: import/bemarkdown/scripts/summarize_combined_ocr_waves.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 从各 wave 最终 final_quality_report.json 重建组合 OCR 总汇总，防止初跑旧状态残留。
+  - path: import/bemarkdown/scripts/convert_pdf_with_marker.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: marker OCR 运行器，检查 Python310、CUDA 和 force-OCR 参数。
+  - path: import/bemarkdown/scripts/replace_images_with_latex.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/wmf_to_png.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/bemarkdown/scripts/apply_formula_reviews.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 应用 hash 绑定的公式视觉复核，支持 Markdown 候选与全库 MTEF 审计数据库。
+  - path: import/bemarkdown/scripts/formula_candidate_utils.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 视觉公式候选的保守规范化、双引擎一致性和 Agent 复核任务门禁；不参与认证 parser 快速路径。
+  - path: import/bemarkdown/scripts/formula_ensemble.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 复用共享模型环境批量取得 PP-FormulaNet 与 TexTeller 公式证据。
+  - path: import/bemarkdown/scripts/mtef_formula_audit.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: DOCX Equation OLE/MTEF/WMF 全链哈希、SQLite v4、parser-first resolve、异常升级、report v2 和原子完成门禁。
+  - path: import/bemarkdown/scripts/structured_resolution.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: OMML/EQ/MTEF/Word/PDF 共用的状态、异常码、原子能力、分离指纹、证据哈希和升级决策层。
+  - path: import/bemarkdown/scripts/certify_structured_conversion.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 全 source-library 结构能力认证，原子生成版本化能力注册表与脱敏审计报告，不调用视觉模型。
+  - path: import/bemarkdown/scripts/calibrate_render_back.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 以正样本及符号、正负号、分式、上下标、围栏负样本标定固定 renderer 回渲门禁；不可靠时关闭自动定稿。
+  - path: import/bemarkdown/scripts/mtef_mathml.py
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 将严格消费的 MTEF XML AST 保守映射为 MathML 和 KB-LaTeX。
+  - path: import/bemarkdown/scripts/mtef_worker.rb
+    owner: bemarkdown
+    scope: skill-owned
+    status: active
+    kind: rb
+    notes: 使用 bundled JRuby 与许可安全 Transpect 核心分片解析 MTEF v3/v5。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/doctor.ps1
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: ps1
+    notes: 本地 OCR/公式转写环境健康检查入口；检查 uv、GPU、三套 venv、Paddle GPU 和公式引擎 import。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/setup_env.ps1
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: ps1
+    notes: 创建 cli/paddle/formula 三套本地 venv 并安装固定依赖。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/download_models.ps1
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: ps1
+    notes: 合成样本预热并验证 Paddle/TexTeller/PP-FormulaNet 等本地模型。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/transcribe_auto.ps1
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: ps1
+    notes: 学生答题卡 q09-q16 全自动本地 OCR 主入口；真实输出只写入 PROJECT_LAYOUT 的 sql.ocr-private。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/_auto_prepare_inputs.py
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 裁切 q09-q16、去红笔、生成长题 student_answer_area 和行切分。
+  - path: import/chinese-handwriting-formula-transcriber/scripts/_auto_ranker.py
+    owner: chinese-handwriting-formula-transcriber
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 短答案模板解析、rejector、候选排序和 auto_transcript 输出。
+  - path: import/textbook-import/scripts/check_and_fix.py
+    owner: textbook-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/exercise-bank-import/scripts/kb_maintenance_check.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 日常维护检查脚本：题库质量、Wiki 死链、RAG metadata 基础完整性。
+  - path: import/exercise-bank-import/scripts/write_exercise_batch.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 将最多 5 题 schema v2 bundle 的 Markdown 与图片映射转为 review view，只有主 agent 两轮复核与全部 hash approval 通过后才原子落盘。
+  - path: import/exercise-bank-import/scripts/audit_exercise_import_workspace.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 按 PROJECT_LAYOUT.yaml 只读审计项目根、临时转换目录和 skill runtime 边界；writer 前后 fail closed。
+  - path: import/exercise-bank-import/scripts/batch_scope.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 为题目 writer、RAG 兼容验证器和图片审计提供统一显式范围与批次数量门禁。
+  - path: import/exercise-bank-import/scripts/validate_exercise_rag_compat.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 检查题目 Markdown 与当前 RAG parser 的兼容性，防止空壳 exercise chunk。
+  - path: import/exercise-bank-import/scripts/audit_exercise_images.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 题库图片结构、透明黑底与语义审计；支持图片 SHA-256 绑定复核并阻断未审或拒绝的 suspect。
+  - path: import/exercise-bank-import/scripts/sync_visual_index.py
+    owner: exercise-bank-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 读取 schema v2 writer 的 scope/report SHA 证据，增量同步 Qwen3-VL 视觉索引并逐张验证本批覆盖。
+  - path: import/video-transcript-import/scripts/bilibili_playurl_download.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: B站 API/媒体一致选路、CDN Range 测速、DASH 下载合并与完整性门禁。
+  - path: import/video-transcript-import/scripts/probe_bilibili_cdn.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 对已知 BV 的视频/音频 CDN 镜像做安全差分测速，不输出签名 URL。
+  - path: import/video-transcript-import/scripts/normalize_video_queue.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 统一单对象/数组队列并生成跨平台安全存储标题。
+  - path: import/video-transcript-import/scripts/video_path_utils.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 视频队列与 Windows 存储标题规范化共享函数。
+  - path: import/video-transcript-import/scripts/transcribe_video_batch.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: import/video-transcript-import/scripts/validate_video_import.py
+    owner: video-transcript-import
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: analyze/teaching-ppt-analysis/scripts/extract_pptx_structure.py
+    owner: teaching-ppt-analysis
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: PPTX 文本、备注、媒体和结构提取辅助脚本。
+  - path: analyze/teaching-ppt-analysis/scripts/render_pdf_pages.py
+    owner: teaching-ppt-analysis
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: PPT 转 PDF 后的逐页渲染和 contact sheet 辅助脚本。
+  - path: maintain/llmwiki-maintenance/scripts/audit_wiki_health.py
+    owner: llmwiki-maintenance
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 只读 Wiki 图谱、图片、raw 指针和视频三页结构审计脚本。
+  - path: maintain/rag-management/scripts/rag_pipeline.py
+    owner: rag-management
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 由对应 canonical SKILL.md/manifest.yaml 调用。
+  - path: maintain/rag-management/scripts/visual_image_index.py
+    owner: rag-management
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: Qwen3-VL 视觉题图索引构建、验证、单条查询和单次模型加载批量查询。
+  - path: ../StudentDataSQL/scripts/preprocess_school_exam_xls.py
+    owner: kb-framework-admin
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: StudentDataSQL 学校成绩单和期中答题卡 seat-only 预处理脚本；从批准的试卷报告和 canonical raw 题目补齐全部知识点元数据；输出目录必须在 StudentDataSQL/runtime/imports/。
+  - path: ../StudentDataSQL/scripts/exam_knowledge_metadata.py
+    owner: student-data-import
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: 解析试卷报告 related_question_ids、canonical raw 题目 frontmatter 与 taxonomy registry，验证并返回稳定 kp_id 元数据。
+  - path: ../StudentDataSQL/scripts/repair_exam_knowledge_points.py
+    owner: student-data-import
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: 对已导入考试执行 dry-run/教师授权回填，创建加密数据库备份并把缺失或旧哈希映射替换为 canonical 题目与 kp_id。
+  - path: ../StudentDataSQL/scripts/import_answer_card_manifest.py
+    owner: kb-framework-admin
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: StudentDataSQL 脱敏答题卡 manifest 入库脚本；不得写入原始姓名、学号、考号或原始文件名。
+  - path: ../StudentDataSQL/scripts/import_roster.py
+    owner: student-data-analysis
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: StudentDataSQL roster 入库脚本；支持不含 real_name 的 seat-only roster。
+  - path: ../StudentDataSQL/scripts/import_exam_csv.py
+    owner: student-data-analysis
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: StudentDataSQL 考试小题得分、作答、方法错误和 evidence_ref 入库脚本。
+  - path: ../StudentDataSQL/scripts/export_exam_student_mastery.py
+    owner: student-data-analysis
+    scope: root-subsystem
+    status: active
+    kind: py
+    notes: StudentDataSQL 单生考试知识点掌握脱敏报告导出脚本；支持 student_id 或 seat_no 安全选择；所有教师可见产物写入 output/，同时导出 Markdown、Word、PDF、掌握率柱状图和可选 OfficeCLI QA；不得输出真实身份、总分、排名、档次、原始作答或答题卡路径。
+  - path: learn/physics-question-tutoring/scripts/question_pipeline.py
+    owner: physics-question-tutoring
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 题目文本/PDF/本地 OCR adapter 解析、EXIF 清理、weak/strong 档、hash 绑定视觉复核和阶段门禁。
+  - path: learn/physics-diagram-toolkit/scripts/render_diagram.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 兼容 v1 低层 diagram JSON 到 SVG/PNG 渲染，支持 polygon/双箭头/分层填充，并校验标签碰撞、边界、非空像素和原图 hash。
+  - path: learn/physics-diagram-toolkit/scripts/diagram_pipeline.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: request v2/spec v3 的 prepare/render/verify/resume，生成 geometry report/review sheet 并执行 hash 绑定原子发布。
+  - path: learn/physics-diagram-toolkit/scripts/calibrate_image.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 原图 EXIF 归一化、OpenCV 几何候选、坐标变换和临时精确网格。
+  - path: learn/physics-diagram-toolkit/scripts/scene_compiler.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 兼容 v2、正式 v3 各向同性 scene graph 到分层 primitives 和语义几何断言编译器。
+  - path: learn/physics-diagram-toolkit/scripts/geometry_validator.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 角度、共点、接触、相切、平行/垂直、尺寸和平抛轨迹的确定性断言与 geometry report。
+  - path: learn/physics-diagram-toolkit/scripts/render_plot.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: Matplotlib/SymPy 白名单函数图和实验数据图 PNG/SVG/PDF 渲染。
+  - path: learn/physics-diagram-toolkit/scripts/diagram_common.py
+    owner: physics-diagram-toolkit
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: task ID、项目路径边界、SHA-256、原子 JSON 和事件日志公共工具。
+  - path: retrieve/lecture-generation/scripts/validate_diagram_asset_separation.py
+    owner: lecture-generation
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 校验 question/solution diagram 的 purpose、style、geometry、completion、SHA-256 和练习/答案 Markdown 引用隔离。
+  - path: learn/exercise-solution-curation/scripts/curate_exercise.py
+    owner: exercise-solution-curation
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 通过 question id、SHA-256、proposal、active batch v3、独立审计、教师授权和 dry-run/apply receipt 局部维护题库完整记录与媒体。
+  - path: learn/exercise-solution-curation/scripts/migrate_p0p1_mission_v2.py
+    owner: exercise-solution-curation
+    scope: skill-owned
+    status: retired
+    kind: py
+    notes: mission v2 历史迁移源码，仅供退役证据复核；禁止执行新的 campaign。
+  - path: learn/exercise-solution-curation/scripts/migrate_p0p1_batches_v3.py
+    owner: exercise-solution-curation
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 保持 833 条 queue ordinal，以当前题目哈希初始化 batch v3，并生成 mission v2 源码、状态和 artifact 的 SHA-256 退役清单。
+  - path: learn/physics-knowledge-graph/scripts/update_graph.py
+    owner: physics-knowledge-graph
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 校验 import handoff 和 managed pages，应用安全图谱增量并隔离破坏性审批项。
+  - path: taxonomy/exercise-knowledge-tags/scripts/manage_taxonomy.py
+    owner: exercise-knowledge-tags
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: 管理不可复用 kp_id、标签 alias/deprecated/replacement、层级环路和题目双字段分配。
+  - path: _shared/scripts/import_handoff.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 创建并验证教材、课标、题库和视频导入到 Role D 图谱维护的强制 handoff。
+  - path: learn/_shared/scripts/evaluate_role_d_models.py
+    owner: role-d-physics-learning
+    scope: shared
+    status: active
+    kind: py
+    notes: 用 12 个协议夹具或 300 题扩展基准评测 qwen3.6-27b/35b-a3b 的 Role D JSON、物理正确性和授权门禁；只从环境变量读取 API key。
+  - path: learn/_shared/scripts/generate_role_d_benchmark.py
+    owner: role-d-physics-learning
+    scope: shared
+    status: active
+    kind: py
+    notes: 确定性生成 240 道物理题和 60 道 Role D 权限/阶段控制题，不包含生产或学生数据。
+  - path: learn/_shared/scripts/generate_role_d_strong_suite.py
+    owner: role-d-physics-learning
+    scope: shared
+    status: active
+    kind: py
+    notes: 生成 30 道文本题、12 个合成识图任务、8 个绘图任务和 12 个治理任务的 strong 前向评测清单。
+  - path: learn/_shared/scripts/validate_role_d_response.py
+    owner: role-d-physics-learning
+    scope: shared
+    status: active
+    kind: py
+    notes: 校验 weak/strong 阶段响应 schema、hint/plan 答案泄露和安全数值表达式一致性。
+  - path: _shared/scripts/agent_context_pack.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 通用工具；不是任务入口，需由 skill 或 agent 兼容层调用。
+  - path: _shared/scripts/check_mcp_requirements.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 检查 manifest 声明的 MCP/plugin 依赖与当前 Hermes profile 的 mcp list 是否匹配。
+  - path: _shared/scripts/install_skill_dependencies.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 新设备部署/依赖修复入口；集中检查 bundled MCP、RAG runtime、BGE-M3 模型和重型 skill runtime。
+  - path: _shared/model-tools/scripts/model_runtime.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: OCR/VLM/STT 共享模型 ID resolver、统一脚本执行、doctor 与 SHA-256 inventory 入口。
+  - path: _shared/model-tools/scripts/mcp_runtime.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: bundled Node/MCP stdio 命令解析与通用 JSON-RPC 调用深模块。
+  - path: _shared/model-tools/scripts/mcp_server.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: native Agent 共用的 repo-local MCP server launcher。
+  - path: _shared/model-tools/scripts/mcp_call.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: 无 native MCP Agent 使用的结构化 CLI fallback。
+  - path: _shared/model-tools/scripts/relocate_runtime_envs.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: 重绑定 bundled CPython 并重建 Windows venv launcher，支持异路径整合包。
+  - path: _shared/model-tools/scripts/setup_runtime.ps1
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: ps1
+    notes: 安装共享 Paddle、公式识别和文档/STT 环境；大资产只写 ignored runtime。
+  - path: _shared/model-tools/scripts/download_models.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: 从官方来源锁定 PaddleOCR-VL revision，并构造、验证 Paddle GPU 模型管线。
+  - path: _shared/model-tools/scripts/migrate_runtime_assets.ps1
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: ps1
+    notes: 默认 dry-run；经授权后复制、哈希校验并可清理旧 OCR/VLM/STT 资产。
+  - path: _shared/model-tools/scripts/benchmark_models.py
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: py
+    notes: 运行合成、代表性 OCR/VLM 与 90 秒语音实测，只输出脱敏汇总。
+  - path: _shared/model-tools/scripts/build_wmf_native_adapter.ps1
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: ps1
+    notes: 从仓库自有 C# 源确定性构建经典 GDI WMF 过滤渲染适配器。
+  - path: _shared/model-tools/scripts/launchers/jruby-complete.cmd
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: cmd
+    notes: 只使用 bundled Temurin JRE 启动 JRuby Complete，不依赖全局 Java。
+  - path: _shared/model-tools/scripts/launchers/apache-batik.cmd
+    owner: _shared-model-tools
+    scope: shared
+    status: active
+    kind: cmd
+    notes: 只使用 bundled Temurin JRE 启动 Batik，并支持 UTF-8 Java argfile 长批次。
+  - path: _shared/scripts/agent_skill_router.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 兼容旧入口；内部复用 skill_retriever.py 的规则/词法路由。
+  - path: _shared/scripts/configure_agent_mcp.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: Hermes/Codex/OpenCode 授权配置适配及其它 Agent fixture/CLI fallback 生成器。
+  - path: _shared/scripts/media_tools.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: FFmpeg/ffprobe portable 组件解析 seam。
+  - path: _shared/scripts/validate_skill_dependencies.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: manifest、MCP catalog、portable registry、许可证和系统依赖闭环审计。
+  - path: _shared/scripts/skill_retriever.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: skills 专用混合检索入口；缓存只写入 _runtime/cache/skill_retrieval/。
+  - path: _shared/scripts/officecli_doc_qa.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 受控 OfficeCLI 检测、本地装载和 DOCX 导出后 OpenXML/视觉 QA；二进制只放 skills/_shared/model-tools/runtime，并仅随授权 portable runtime 包导出。
+  - path: maintain/integration-package-update/scripts/sync_integration_package.py
+    owner: integration-package-update
+    scope: skill-owned
+    status: active
+    distribution: local_only
+    package_export: false
+    kind: py
+    notes: 本机开发库专用整合包同步脚本；默认 dry-run，只有 --apply --user-authorized 才写入整合包，导出包时必须过滤。
+  - path: retrieve/md-to-docx/scripts/md2docx.py
+    owner: md-to-docx
+    scope: skill-owned
+    status: active
+    kind: py
+    notes: legacy reusable Markdown to DOCX/PDF converter migrated from output; prefer templates for new variants.
+  - path: _shared/scripts/run_generic_agent_context.bat
+    owner: _shared
+    scope: shared
+    status: active
+    kind: bat
+    notes: 通用工具；不是任务入口，需由 skill 或 agent 兼容层调用。
+  - path: _shared/scripts/validate_skill_library.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 通用工具；不是任务入口，需由 skill 或 agent 兼容层调用。
+  - path: _shared/scripts/manage_tmp_workspace.py
+    owner: kb-framework-admin
+    scope: shared
+    status: active
+    kind: py
+    notes: 旧版 tmp 保留期 dry-run 兼容入口；直接删除已禁用并迁移到 hash 绑定清理计划。
+  - path: maintain/cleanup-runtime-assets/scripts/cleanup_runtime_assets.py
+    owner: cleanup-runtime-assets
+    scope: skill
+    status: active
+    kind: py
+    notes: Role C cleanup plan 路径边界、类别授权、expected_bytes、source canonical SHA-256 与 dry-run/apply 门禁。
+  - path: _shared/scripts/import_batch_contract.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 七个导入 skill 共用的一次性 agent 任务卡、不可重排队列、重试 ledger、隐私 profile 与 compact result 校验器。
+  - path: _shared/scripts/agent_mission_orchestrator.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 五命令 batch v3 控制面；复杂 canary 单项派发，任务卡分阶段 primary skill、预建 result 骨架并绑定题目级 source slice，支持结构化运行失败、独立审计、一次 repair、受控恢复与 receipt 续跑。
+  - path: _shared/scripts/agent_platform_adapter.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 通用 capability 到 Codex 静态模型/推理档映射；不生成平台能力证明、worker assignment 或 attestation。
+  - path: _shared/scripts/import_v1_mission_adapter.py
+    owner: _shared
+    scope: shared
+    status: retired
+    kind: py
+    notes: mission v2 兼容 adapter 历史源码，仅供只读复核；batch v3 不调用。
+  - path: _shared/scripts/write_import_artifact_batch.py
+    owner: _shared
+    scope: shared
+    status: active
+    kind: py
+    notes: 教材、课标和视频新 artifact 的 create-only dry-run、hash approval、原子 apply、回滚与 receipt verify writer。
+  - path: _archive/temp-scripts-20260704/skill-runtime-migration/migrate_pix2text_hermes_venv.py
+    owner: skill-library-runtime-migration
+    scope: archived-one-off
+    status: archived
+    kind: py
+    notes: 一次性迁移脚本；不作为正式工作流入口。
+  - path: _archive/temp-scripts-20260704/skill-runtime-migration/migrate_skill_runtime_assets.py
+    owner: skill-library-runtime-migration
+    scope: archived-one-off
+    status: archived
+    kind: py
+    notes: 一次性迁移脚本；不作为正式工作流入口。

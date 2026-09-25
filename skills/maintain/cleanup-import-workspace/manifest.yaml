@@ -1,0 +1,25 @@
+name: cleanup-import-workspace
+category: maintain
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: false
+description: 单个已完成导入任务的 tmp 工作区受控清理
+triggers:
+  - 清理导入任务临时文件
+  - 清理已完成导入任务
+  - 清理题库导入临时文件
+  - 清理视频导入临时文件
+  - cleanup manifest
+entry_skill: SKILL.md
+scripts: []
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: never
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-22

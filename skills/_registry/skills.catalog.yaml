@@ -1,0 +1,301 @@
+# Generated catalog of active canonical LLMWiki skills.
+skills:
+  - name: bemarkdown
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/bemarkdown/SKILL.md
+    manifest: import/bemarkdown/manifest.yaml
+    card: import/bemarkdown/card.md
+    triggers: [DOCX, PDF, 图片型PDF, 扫描PDF, PDF图片转写, 图片型PDF组合OCR, 组合OCR, 组合转写, VLM复核任务, OMML, EQ, MTEF, MathType, Equation OLE, WMF, OCR, 本地OCR兜底, PaddleOCR-VL PDF兜底, Markdown转换]
+    scripts_count: 26
+    references_count: 9
+    runtime: true
+  - name: chinese-handwriting-formula-transcriber
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/chinese-handwriting-formula-transcriber/SKILL.md
+    manifest: import/chinese-handwriting-formula-transcriber/manifest.yaml
+    card: import/chinese-handwriting-formula-transcriber/card.md
+    triggers: [中文手写转写, 手写公式OCR, 学生答题卡识别, 答题卡OCR, 物理公式LaTeX转写, PaddleOCR-VL, PP-OCRv6, PP-FormulaNet, TexTeller]
+    scripts_count: 23
+    references_count: 1
+    runtime: true
+  - name: textbook-import
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/textbook-import/SKILL.md
+    manifest: import/textbook-import/manifest.yaml
+    card: import/textbook-import/card.md
+    triggers: [教材导入, 课本入库, 章节拆分, OCR清理]
+    scripts_count: 0
+    references_count: 1
+    runtime: false
+  - name: standards-import
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/standards-import/SKILL.md
+    manifest: import/standards-import/manifest.yaml
+    card: import/standards-import/card.md
+    triggers: [课程标准, 评价体系, 标准导入, 试题分析报告]
+    scripts_count: 0
+    references_count: 0
+    runtime: false
+  - name: exercise-bank-import
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/exercise-bank-import/SKILL.md
+    manifest: import/exercise-bank-import/manifest.yaml
+    card: import/exercise-bank-import/card.md
+    triggers: [题库导入, 题库录入, 试卷入库, 讲义题目提取, 题目配对, 题库图片视觉索引同步]
+    scripts_count: 7
+    references_count: 15
+    runtime: true
+  - name: student-data-import
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/student-data-import/SKILL.md
+    manifest: import/student-data-import/manifest.yaml
+    card: import/student-data-import/card.md
+    triggers: [StudentDataSQL导入, 学生数据导入, 名册导入, 成绩单导入, 小题分导入, 答题卡manifest导入, seat-only, 座位号导入]
+    scripts_count: 1
+    references_count: 2
+    runtime: false
+  - name: video-transcript-import
+    status: active
+    category: import
+    role: role-a-import-maintenance
+    skill: import/video-transcript-import/SKILL.md
+    manifest: import/video-transcript-import/manifest.yaml
+    card: import/video-transcript-import/card.md
+    triggers: [B站视频导入, 视频转写, 抽帧, faster-whisper, VLM, 关键帧]
+    scripts_count: 3
+    references_count: 20
+    runtime: true
+  - name: llmwiki-rag-retrieval
+    status: active
+    category: retrieve
+    role: role-b-retrieval-calling
+    skill: retrieve/llmwiki-rag-retrieval/SKILL.md
+    manifest: retrieve/llmwiki-rag-retrieval/manifest.yaml
+    card: retrieve/llmwiki-rag-retrieval/card.md
+    triggers: [知识库检索, RAG, Wiki导航, 备课, 解题, 组卷]
+    scripts_count: 0
+    references_count: 2
+    runtime: false
+  - name: lecture-generation
+    status: active
+    category: retrieve
+    role: role-b-retrieval-calling
+    skill: retrieve/lecture-generation/SKILL.md
+    manifest: retrieve/lecture-generation/manifest.yaml
+    card: retrieve/lecture-generation/card.md
+    triggers: [讲义生成, 复习讲义, 组卷, 备课, 输出]
+    scripts_count: 0
+    references_count: 1
+    runtime: false
+  - name: knowledge-checklist
+    status: active
+    category: retrieve
+    role: role-b-retrieval-calling
+    skill: retrieve/knowledge-checklist/SKILL.md
+    manifest: retrieve/knowledge-checklist/manifest.yaml
+    card: retrieve/knowledge-checklist/card.md
+    triggers: [知识清单, 章节知识清单, 全册知识清单, 考点梳理, 方法总结, 复习清单, 教材总结, 重点知识, 易错点, 单杆, 双杆, 导体棒, 杆轨模型]
+    scripts_count: 0
+    references_count: 1
+    runtime: false
+  - name: md-to-docx
+    status: active
+    category: retrieve
+    role: role-b-retrieval-calling
+    skill: retrieve/md-to-docx/SKILL.md
+    manifest: retrieve/md-to-docx/manifest.yaml
+    card: retrieve/md-to-docx/card.md
+    triggers: [Word输出, DOCX, PDF, OMML, 排版, OfficeCLI, 视觉校验, OpenXML校验, 输出质量检查]
+    scripts_count: 1
+    references_count: 3
+    runtime: false
+  - name: teaching-output-format
+    status: active
+    category: retrieve
+    role: role-b-retrieval-calling
+    skill: retrieve/teaching-output-format/SKILL.md
+    manifest: retrieve/teaching-output-format/manifest.yaml
+    card: retrieve/teaching-output-format/card.md
+    triggers: [试卷格式, 讲义格式, 宋体, Times New Roman, 格式规范]
+    scripts_count: 0
+    references_count: 2
+    runtime: false
+  - name: llmwiki-maintenance
+    status: active
+    category: maintain
+    role: role-a-import-maintenance
+    skill: maintain/llmwiki-maintenance/SKILL.md
+    manifest: maintain/llmwiki-maintenance/manifest.yaml
+    card: maintain/llmwiki-maintenance/card.md
+    triggers: [Wiki维护, 死链, 孤立页, 图谱健康, 视频三页]
+    scripts_count: 1
+    references_count: 0
+    runtime: false
+  - name: rag-management
+    status: active
+    category: maintain
+    role: role-a-import-maintenance
+    skill: maintain/rag-management/SKILL.md
+    manifest: maintain/rag-management/manifest.yaml
+    card: maintain/rag-management/card.md
+    triggers: [RAG重建, BGE-M3, FAISS, 向量索引]
+    scripts_count: 2
+    references_count: 0
+    runtime: true
+  - name: cleanup-import-workspace
+    status: active
+    category: maintain
+    role: role-a-import-maintenance
+    skill: maintain/cleanup-import-workspace/SKILL.md
+    manifest: maintain/cleanup-import-workspace/manifest.yaml
+    card: maintain/cleanup-import-workspace/card.md
+    triggers: [清理导入任务临时文件, 清理已完成导入任务, 清理题库导入临时文件, 清理视频导入临时文件, cleanup manifest]
+    scripts_count: 1
+    references_count: 0
+    runtime: false
+  - name: cleanup-runtime-assets
+    status: active
+    category: maintain
+    role: role-c-kb-framework-admin
+    skill: maintain/cleanup-runtime-assets/SKILL.md
+    manifest: maintain/cleanup-runtime-assets/manifest.yaml
+    card: maintain/cleanup-runtime-assets/card.md
+    triggers: [全局清理tmp, 清理共享runtime, 清理旧版便携程序, 清理RAG缓存, 清理程序残留, runtime cleanup, 存储空间清理, 冗余文件清理, 重复模型缓存]
+    scripts_count: 1
+    references_count: 0
+    runtime: false
+  - name: kb-framework-admin
+    status: active
+    category: maintain
+    role: role-c-kb-framework-admin
+    skill: maintain/kb-framework-admin/SKILL.md
+    manifest: maintain/kb-framework-admin/manifest.yaml
+    card: maintain/kb-framework-admin/card.md
+    triggers: [框架维护, 角色C, registry, router, validator, 验证器, skill门禁, schema升级, 入口文件, agent shim, 角色ABD测试, 创建角色D, 角色D路由, 整合包, 部署包, 整合包完整性, 整合包边界, StudentDataSQL, SQL学生数据库框架, 学生数据schema]
+    scripts_count: 0
+    references_count: 0
+    runtime: false
+  - name: agent-campaign-orchestration
+    status: active
+    category: maintain
+    role: role-c-kb-framework-admin
+    skill: maintain/agent-campaign-orchestration/SKILL.md
+    manifest: maintain/agent-campaign-orchestration/manifest.yaml
+    card: maintain/agent-campaign-orchestration/card.md
+    triggers: [agent campaign, 多 agent 编排, 多智能体任务编排, campaign 批次调度, campaign 续跑, campaign 状态汇总, 一次性子agent, 子agent审计, 长任务调度, P0/P1 批量修正, 批量题库维护审计, 导入批次独立审计]
+    scripts_count: 1
+    references_count: 0
+    runtime: false
+  - name: integration-package-update
+    status: active
+    category: maintain
+    role: role-c-kb-framework-admin
+    skill: maintain/integration-package-update/SKILL.md
+    manifest: maintain/integration-package-update/manifest.yaml
+    card: maintain/integration-package-update/card.md
+    distribution: local_only
+    package_export: false
+    triggers: [用户授意更新整合包, 授权更新整合包, 执行整合包同步, 同步整合包, 更新部署包, 同步部署包, apply integration package]
+    scripts_count: 1
+    references_count: 0
+    runtime: false
+  - name: git-repository-management
+    status: active
+    category: maintain
+    role: role-c-kb-framework-admin
+    skill: maintain/git-repository-management/SKILL.md
+    manifest: maintain/git-repository-management/manifest.yaml
+    card: maintain/git-repository-management/card.md
+    triggers: [git, git仓库, .gitignore, 初始化仓库, 提交, commit, 版本控制]
+    scripts_count: 0
+    references_count: 0
+    runtime: false
+  - name: teaching-ppt-analysis
+    status: active
+    category: analyze
+    role: role-b-retrieval-calling
+    skill: analyze/teaching-ppt-analysis/SKILL.md
+    manifest: analyze/teaching-ppt-analysis/manifest.yaml
+    card: analyze/teaching-ppt-analysis/card.md
+    triggers: [PPT分析, 课件分析, 课堂投影, 教学逻辑]
+    scripts_count: 0
+    references_count: 1
+    runtime: false
+  - name: student-data-analysis
+    status: active
+    category: analyze
+    role: role-b-retrieval-calling
+    skill: analyze/student-data-analysis/SKILL.md
+    manifest: analyze/student-data-analysis/manifest.yaml
+    card: analyze/student-data-analysis/card.md
+    triggers: [SQL学生数据, 学生成绩分析, 作业分析, 学生数据库, 班级薄弱点, 学生掌握度, 单生期中知识点掌握, 学生知识点掌握情况, STUDENT_DATA_DB_KEY, 真实库密钥]
+    scripts_count: 3
+    references_count: 0
+    runtime: false
+  - name: exercise-knowledge-tags
+    status: active
+    category: taxonomy
+    role: role-d-physics-learning
+    skill: taxonomy/exercise-knowledge-tags/SKILL.md
+    manifest: taxonomy/exercise-knowledge-tags/manifest.yaml
+    card: taxonomy/exercise-knowledge-tags/card.md
+    triggers: [知识点标签, 题库分类, knowledge_points, knowledge_point_ids, ai_extra_tags, 合并知识点标签, 改名知识点标签, 移动知识点标签]
+    scripts_count: 1
+    references_count: 3
+    runtime: false
+  - name: physics-question-tutoring
+    status: active
+    category: learn
+    role: role-d-physics-learning
+    skill: learn/physics-question-tutoring/SKILL.md
+    manifest: learn/physics-question-tutoring/manifest.yaml
+    card: learn/physics-question-tutoring/card.md
+    triggers: [学生拍题, 拍照识别并讲解, 讲解这道题, 题意确认, 分层提示, 物理题图片]
+    scripts_count: 2
+    references_count: 2
+    runtime: false
+  - name: physics-diagram-toolkit
+    status: active
+    category: learn
+    role: role-d-physics-learning
+    skill: learn/physics-diagram-toolkit/SKILL.md
+    manifest: learn/physics-diagram-toolkit/manifest.yaml
+    card: learn/physics-diagram-toolkit/card.md
+    triggers: [物理示意图生成, 原创物理图, 原创物理示意图, 题目情境图, 答案解析图, 原图受力批注, 运动学批注, 画受力图, 受力箭头, 坐标系图像, 函数图, 实验数据图, 实验数据折线, x-t/v-t/a-t/F-t 图, 矢量图, 轨迹图, 图上批注]
+    scripts_count: 7
+    references_count: 2
+    runtime: true
+  - name: exercise-solution-curation
+    status: active
+    category: learn
+    role: role-d-physics-learning
+    skill: learn/exercise-solution-curation/SKILL.md
+    manifest: learn/exercise-solution-curation/manifest.yaml
+    card: learn/exercise-solution-curation/card.md
+    triggers: [修改题目解析, 补写详解, 修复答案解析不一致, 题库解析维护, 修改 MC 解析]
+    scripts_count: 4
+    references_count: 1
+    runtime: false
+  - name: physics-knowledge-graph
+    status: active
+    category: learn
+    role: role-d-physics-learning
+    skill: learn/physics-knowledge-graph/SKILL.md
+    manifest: learn/physics-knowledge-graph/manifest.yaml
+    card: learn/physics-knowledge-graph/card.md
+    triggers: [更新高中物理知识关系图谱, 知识关系图谱维护, 专题枢纽更新, 图谱反向链接, import handoff]
+    scripts_count: 1
+    references_count: 2
+    runtime: false

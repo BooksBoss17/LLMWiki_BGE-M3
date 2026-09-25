@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Batch card v3",
+  "type": "object",
+  "required": ["schema_version", "kind", "campaign_id", "batch_id", "run_id", "phase", "stage_plan", "items", "artifact_root", "result_path", "result_contract", "worker_contract"],
+  "not": {"required": ["skills"]},
+  "properties": {
+    "schema_version": {"const": 3},
+    "kind": {"const": "batch_card"},
+    "campaign_id": {"type": "string"},
+    "batch_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "phase": {"enum": ["executor", "auditor", "repair", "source"]},
+    "stage_plan": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["order", "stage", "primary_skill", "completion", "formal_write"],
+        "properties": {
+          "order": {"type": "integer", "minimum": 1},
+          "stage": {"type": "string", "minLength": 1},
+          "primary_skill": {"type": "string", "minLength": 1},
+          "completion": {"type": "string", "minLength": 1},
+          "formal_write": {"const": false}
+        }
+      }
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["question_id", "target_ref", "capability"],
+        "properties": {
+          "question_id": {"type": "string", "minLength": 1},
+          "source_cache_root": {"type": "string"},
+          "source_slice_path": {"type": "string"},
+          "source_artifact_root": {"type": "string"},
+          "source_slice_ref": {"$ref": "#/$defs/file_ref"}
+        }
+      }
+    },
+    "artifact_root": {"type": "string"},
+    "result_path": {"type": "string"},
+    "source_slice_contract": {
+      "type": "object",
+      "required": ["schema_path", "manifest_skeleton_precreated", "worker_must_overwrite_skeleton", "artifact_must_be_under_item_root", "locator_coordinate_space_required"],
+      "properties": {
+        "schema_path": {"const": "skills/_shared/schemas/source_slice_v3.schema.json"},
+        "manifest_skeleton_precreated": {"const": true},
+        "worker_must_overwrite_skeleton": {"const": true},
+        "artifact_must_be_under_item_root": {"const": true},
+        "locator_coordinate_space_required": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "result_contract": {
+      "type": "object",
+      "required": ["skeleton_precreated", "must_submit_before_exit", "schema_path", "producer_required"],
+      "properties": {
+        "skeleton_precreated": {"const": true},
+        "must_submit_before_exit": {"const": true},
+        "schema_path": {"const": "skills/_shared/schemas/batch_result_v3.schema.json"},
+        "producer_required": {"const": true},
+        "partial_failure_statuses": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "worker_contract": {
+      "type": "object",
+      "required": ["execution_mode", "fork_context", "worker_instance_id_source", "producer_role", "main_agent_may_produce_result"],
+      "properties": {
+        "execution_mode": {"const": "isolated_worker"},
+        "fork_context": {"const": false},
+        "worker_instance_id_source": {"const": "spawn_response"},
+        "producer_role": {"enum": ["executor", "auditor", "repair", "source"]},
+        "main_agent_may_produce_result": {"const": false}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"phase": {"const": "source"}}, "required": ["phase"]},
+      "then": {
+        "required": ["source_slice_contract"],
+        "properties": {
+          "items": {
+            "items": {
+              "required": ["source_cache_root", "source_slice_path", "source_artifact_root"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

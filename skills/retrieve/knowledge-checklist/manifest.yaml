@@ -1,0 +1,27 @@
+name: knowledge-checklist
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: Generate evidence-backed teaching knowledge checklists and method summaries, then hand Word/PDF export to md-to-docx QA when requested
+triggers:
+  - 知识清单
+  - 考点梳理
+  - 方法总结
+  - 复习清单
+  - 教材总结
+  - 重点知识
+  - 易错点
+entry_skill: SKILL.md
+scripts: []
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-05

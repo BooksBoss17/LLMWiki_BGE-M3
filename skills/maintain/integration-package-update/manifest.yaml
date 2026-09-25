@@ -1,0 +1,31 @@
+name: integration-package-update
+category: maintain
+role: role-c-kb-framework-admin
+version: 1.1.0
+status: active
+locked: false
+distribution: local_only
+package_export: false
+description: 本机开发库专用的整合包更新/同步 skill；显式授权时可同步 registry allowlist 便携运行库
+triggers:
+  - 用户授意更新整合包
+  - 授权更新整合包
+  - 执行整合包同步
+  - 同步整合包
+  - 更新部署包
+  - 同步部署包
+  - apply integration package
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/sync_integration_package.py
+    purpose: dry-run or authorized apply sync from development KB to integration package
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_script
+  models: never_inline
+last_verified: 2026-07-07

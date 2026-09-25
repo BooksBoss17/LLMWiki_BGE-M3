@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "default_profile": "weak",
+  "profiles": {
+    "weak": {
+      "vision_review": false,
+      "retrieval_strategy": "minimal_then_standard",
+      "multi_method_reasoning": false,
+      "verification_passes": 1,
+      "diagram_visual_review": false,
+      "diagram_revision_limit": 0,
+      "response_validation_required": true,
+      "numeric_recheck_required": true,
+      "numeric_retry_limit": 1
+    },
+    "strong": {
+      "vision_review": true,
+      "retrieval_strategy": "standard_then_deep_on_unresolved",
+      "multi_method_reasoning": true,
+      "verification_passes": 2,
+      "diagram_visual_review": true,
+      "diagram_revision_limit": 2,
+      "curator_question_fields": ["stem", "answer", "solution", "assets", "media_files", "ai_extra_tags"],
+      "curator_media_replace_requires_target_hash": true,
+      "diagram_question_bank_writeback": true,
+      "standard_kp_fields_require_taxonomy_skill": true,
+      "response_validation_required": true,
+      "numeric_recheck_required": true,
+      "numeric_retry_limit": 1
+    }
+  },
+  "invariants": {
+    "default_mode": "student",
+    "raw_fulltext_allowed": false,
+    "student_database_allowed": false,
+    "write_outside_session_allowed": false,
+    "curator_apply_requires_teacher_authorization": true,
+    "strong_curator_full_question_curation_allowed": true,
+    "destructive_apply_requires_allow_destructive": true
+  }
+}

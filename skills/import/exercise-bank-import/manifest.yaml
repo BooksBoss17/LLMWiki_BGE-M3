@@ -1,0 +1,34 @@
+name: exercise-bank-import
+category: import
+role: role-a-import-maintenance
+version: 1.2.0
+status: active
+locked: true
+description: 试卷/作业/讲义题目导入题库
+triggers:
+  - 题库导入
+  - 试卷入库
+  - 讲义题目提取
+  - 题目配对
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/kb_maintenance_check.py
+    purpose: 日常维护检查脚本：题库质量、Wiki 死链、RAG metadata 基础完整性
+  - path: scripts/validate_exercise_rag_compat.py
+    purpose: 检查题目 Markdown 是否能被当前 RAG parser 切出非空题干、答案、详解和 knowledge_points
+  - path: scripts/audit_exercise_images.py
+    purpose: 检查题库图片断链、assets/body mismatch、明确指图但零资产、透明 PNG 黑底风险、暗图风险和语义复核候选
+  - path: ../../_shared/scripts/import_handoff.py
+    purpose: 创建并校验 Role A 到 Role D 的强制 import handoff
+  - path: ../../learn/physics-knowledge-graph/scripts/update_graph.py
+    purpose: 在最终 RAG 重建前应用或审批受控图谱增量
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-10

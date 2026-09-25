@@ -1,0 +1,33 @@
+name: agent-campaign-orchestration
+category: maintain
+role: role-c-kb-framework-admin
+version: 3.4.0
+status: active
+locked: true
+description: 先批量完成原件映射与题目切片独立审计，再进入纯 Role D 修正的一次性多角色批次控制面
+triggers:
+  - agent campaign
+  - 多 agent 编排
+  - campaign 批次调度
+  - campaign 续跑
+  - 一次性子agent
+  - 子agent审计
+entry_skill: SKILL.md
+scripts:
+  - path: ../../_shared/scripts/agent_mission_orchestrator.py
+    purpose: five-command v3 batch control plane
+schemas:
+  - path: ../../_shared/schemas/campaign_state_v3.schema.json
+    purpose: durable campaign state
+  - path: ../../_shared/schemas/batch_card_v3.schema.json
+    purpose: one-shot worker task card
+  - path: ../../_shared/schemas/batch_result_v3.schema.json
+    purpose: compact executor or auditor result
+  - path: ../../_shared/schemas/apply_receipt_v3.schema.json
+    purpose: canonical writer evidence
+load_policy:
+  default: read_skill_only
+  references: never
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-30

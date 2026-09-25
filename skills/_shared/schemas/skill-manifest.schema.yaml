@@ -1,0 +1,20 @@
+# LLMWiki_BGE-M3 skill manifest schema (human-readable)
+required:
+  - name
+  - category
+  - role
+  - version
+  - status
+  - entry_skill
+  - triggers
+  - load_policy
+fields:
+  name: canonical skill id, lowercase-hyphen
+  category: import | retrieve | maintain | analyze | taxonomy
+  role: role-a-import-maintenance | role-b-retrieval-calling | shared
+  status: active | archived | redirect
+  locked: true/false, whether workflow is permission-locked
+  scripts: list of {path, purpose}
+  mcp_servers: list of {name, required, catalog, purpose, tools}; MCP/plugin dependencies needed by this skill
+  runtime: models/envs/requirements owned by this skill
+  load_policy: controls router behavior; scripts/models never inline

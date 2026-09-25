@@ -1,0 +1,26 @@
+name: electromagnetic-rod-problems
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: Organize electromagnetic induction rod-model knowledge, method summaries, Chinese-labeled diagrams, and Word/PDF export QA handoff
+triggers:
+  - 单杆 双杆 单双杆
+  - 单杆问题 双杆问题 单双杆问题
+  - 双棒 导体棒 杆轨模型
+  - 导体棒问题 电磁感应综合 终端速度
+  - 安培力 动量能量
+  - 解题方法 解题思路
+entry_skill: SKILL.md
+scripts: []
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-05

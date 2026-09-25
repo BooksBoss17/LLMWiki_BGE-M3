@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "selection_policy": "质量优先。只有识别质量等价时，运行耗时才作为次级判定条件。",
+  "benchmark_reference": "benchmark-summary.json",
+  "profiles": {
+    "document_ocr": {
+      "primary": "paddleocr-vl-1.6",
+      "required_dependencies": ["pp-doclayoutv3"],
+      "candidates": ["marker-pdf", "surya-ocr", "pp-ocrv6-medium-det", "pp-ocrv6-medium-rec"],
+      "acceptance": "保留排序正确的中文文本、公式、表格、图像和未解决的冲突块。"
+    },
+    "text_ocr": {
+      "primary": "pp-ocrv6-medium-rec",
+      "detector": "pp-ocrv6-medium-det",
+      "candidates": ["surya-ocr"],
+      "acceptance": "在不静默漏行的前提下取最低 CER；手写识别结果仍作为可复核证据。"
+    },
+    "formula_ocr": {
+      "primary": "pp-formulanet-plus-l",
+      "candidates": ["texteller-1.0.2"],
+      "decision": "两个视觉引擎只提供候选证据；独立 WMF 必须复核，MTEF 公式还必须与结构候选完全一致。"
+    },
+    "legacy_word_formula": {
+      "structure_runtime": "transpect-mathtype-0.0.7.5",
+      "required_engines": ["mtef", "pp-formulanet-plus-l", "texteller-1.0.2"],
+      "render_order": ["wmf-native-adapter-1.0.0", "apache-batik-1.19", "libreoffice-26.2.4.2"],
+      "decision": "三源保守归一化后完全一致、渲染几何无风险且不命中高风险结构时才 machine_final；其余 needs_vlm 或 blocked。"
+    },
+    "speech_transcription": {
+      "primary": "faster-whisper-large-v3",
+      "fallbacks": ["faster-whisper-medium"],
+      "defaults": {"device": "cuda", "compute_type": "float16", "language": "zh", "vad_filter": true},
+      "acceptance": "时间戳完整、分段非空，并在本地基准测试中取最低中文 CER。"
+    }
+  }
+}

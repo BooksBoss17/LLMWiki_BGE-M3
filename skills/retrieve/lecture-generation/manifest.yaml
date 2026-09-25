@@ -1,0 +1,30 @@
+name: lecture-generation
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.1.0
+status: active
+locked: false
+description: 讲义/复习讲义/组卷生成，隔离题目图与解析图后交给 md-to-docx 导出 Word/PDF 并做 QA
+triggers:
+  - 讲义生成
+  - 复习讲义
+  - 组卷
+  - 备课
+  - 输出
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/validate_diagram_asset_separation.py
+    purpose: 发布前校验 question/solution diagram 的 purpose、style、geometry、completion、SHA 和 Markdown 引用隔离
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

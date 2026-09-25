@@ -1,0 +1,3 @@
+ALTER TABLE students ADD COLUMN family_name TEXT;
+
+ALTER TABLE students ADD COLUMN gender TEXT NOT NULL DEFAULT 'U';

@@ -1,0 +1,30 @@
+name: cleanup-runtime-assets
+category: maintain
+role: role-c-kb-framework-admin
+version: 1.0.0
+status: active
+locked: false
+description: 全局存储审计与 tmp、runtime、缓存、可重建资产和哈希重复别名的受控清理
+triggers:
+  - 全局清理tmp
+  - 清理共享runtime
+  - 清理旧版便携程序
+  - 清理RAG缓存
+  - 清理程序残留
+  - runtime cleanup
+  - 存储空间清理
+  - 冗余文件清理
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/cleanup_runtime_assets.py
+    purpose: validate cleanup plans, enforce path and authorization gates, and apply exact targets
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: never
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-22

@@ -1,0 +1,20 @@
+name: example-skill
+category: import
+role: role-a-import-maintenance
+version: 1.0.0
+status: active
+locked: false
+description: 简述用途
+triggers: []
+entry_skill: SKILL.md
+scripts: []
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: YYYY-MM-DD

@@ -1,0 +1,5 @@
+term_id,school_year,term_name,class_id,class_name,grade_level,student_id,student_code,pseudonym,real_name,school_number,guardian_contact,seat_no,starts_on,ends_on,joined_on,status
+demo_term_2026_spring,2025-2026,spring,demo_class_001,合成高一3班,高一,demo_student_001,SYN001,P001,演示学生一,NO-SYN001,,01,2026-02-20,2026-07-10,2026-02-20,active
+demo_term_2026_spring,2025-2026,spring,demo_class_001,合成高一3班,高一,demo_student_002,SYN002,P002,演示学生二,NO-SYN002,,02,2026-02-20,2026-07-10,2026-02-20,active
+demo_term_2026_spring,2025-2026,spring,demo_class_001,合成高一3班,高一,demo_student_003,SYN003,P003,演示学生三,NO-SYN003,,03,2026-02-20,2026-07-10,2026-02-20,active
+demo_term_2026_spring,2025-2026,spring,demo_class_001,合成高一3班,高一,demo_student_004,SYN004,P004,演示学生四,NO-SYN004,,04,2026-02-20,2026-07-10,2026-02-20,active

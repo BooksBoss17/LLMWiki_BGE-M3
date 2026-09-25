@@ -1,0 +1,4 @@
+interface:
+  display_name: "物理知识图谱维护"
+  short_description: "根据导入交接文件安全地局部维护受控高中物理知识关系图谱"
+  default_prompt: "使用 $physics-knowledge-graph 的 strong 档根据 import handoff 复核候选关系，只按固定 action 更新受控图谱。"

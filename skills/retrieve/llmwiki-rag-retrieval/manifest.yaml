@@ -1,0 +1,30 @@
+name: llmwiki-rag-retrieval
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: Wiki+RAG 双重检索，按问题类型选择轻度/标准/深度
+triggers:
+  - 知识库检索
+  - RAG
+  - Wiki导航
+  - 备课
+  - 解题
+  - 组卷
+entry_skill: SKILL.md
+scripts:
+  []
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

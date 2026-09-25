@@ -1,0 +1,21 @@
+version: 1
+root: 高中物理知识关系图谱.md
+managed_pages:
+  - 高中物理知识关系图谱.md
+  - 力与平衡.md
+  - 力的分解.md
+  - 牛顿运动定律.md
+  - 运动学图像.md
+  - 传送带模型.md
+  - 板块模型.md
+  - 平抛运动.md
+  - 动能定理.md
+  - 动量.md
+  - 电路实验.md
+  - 机械振动与机械波.md
+  - 光学专题.md
+  - 热学与原子物理.md
+  - 综合方法与高考题讲解.md
+managed_block:
+  begin: "<!-- ROLE_D_MANAGED:BEGIN -->"
+  end: "<!-- ROLE_D_MANAGED:END -->"

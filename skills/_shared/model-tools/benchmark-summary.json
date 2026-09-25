@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-13T10:12:00+08:00",
+  "privacy": {
+    "status": "sanitized",
+    "stored": ["fixture_id", "aggregate_metrics", "step_status", "elapsed_seconds"],
+    "excluded": ["student_names", "absolute_private_paths", "source_images", "crops", "recognized_private_text"]
+  },
+  "hardware": {
+    "gpu": "NVIDIA GeForce RTX 4070",
+    "vram_bytes": 12878086144,
+    "paddle_device": "gpu:0",
+    "paddle_peak_allocated_bytes": 7100601856,
+    "paddle_peak_reserved_bytes": 8353812224
+  },
+  "official_sources": {
+    "retrieved_at": "2026-07-13",
+    "policy": "描述和许可证仅来自各项目官方仓库或 PaddlePaddle/Systran/OleehyO 模型卡。官方声明不等于本地基准测试结果。",
+    "items": [
+      {
+        "name": "PaddlePaddle",
+        "url": "https://github.com/PaddlePaddle/Paddle",
+        "license": "Apache-2.0",
+        "official_claim": "高性能产业级深度学习框架。"
+      },
+      {
+        "name": "PaddleOCR",
+        "url": "https://github.com/PaddlePaddle/PaddleOCR",
+        "license": "Apache-2.0",
+        "official_claim": "将 PDF 和图像文档转换为结构化数据，并支持 100 多种语言。"
+      },
+      {
+        "name": "PaddleX",
+        "url": "https://github.com/PaddlePaddle/PaddleX",
+        "license": "Apache-2.0",
+        "official_claim": "基于 PaddlePaddle 的一体化开发工具。"
+      },
+      {
+        "name": "PP-OCRv6 medium 检测器与识别器",
+        "url": "https://huggingface.co/PaddlePaddle/PP-OCRv6_medium_rec",
+        "license": "Apache-2.0",
+        "official_claim": "用于图像转文本工作流的 PaddleOCR 官方文本检测和识别模型。"
+      },
+      {
+        "name": "PP-FormulaNet_plus-L",
+        "url": "https://huggingface.co/PaddlePaddle/PP-FormulaNet_plus-L",
+        "license": "Apache-2.0",
+        "official_claim": "生成 LaTeX 候选结果的官方公式识别模型。"
+      },
+      {
+        "name": "PP-DocLayoutV3",
+        "url": "https://huggingface.co/PaddlePaddle/PP-DocLayoutV3",
+        "license": "Apache-2.0",
+        "official_claim": "用于多语言文档元素和阅读顺序的官方版面检测模型。"
+      },
+      {
+        "name": "PaddleOCR-VL-1.6",
+        "url": "https://huggingface.co/PaddlePaddle/PaddleOCR-VL-1.6",
+        "license": "Apache-2.0",
+        "official_claim": "用于文本、公式、表格、图表、印章和复杂文档解析的 0.9B 文档 VLM。"
+      },
+      {
+        "name": "Pix2Text",
+        "url": "https://github.com/breezedeus/Pix2Text",
+        "license": "MIT",
+        "official_claim": "面向版面、表格、公式和多语言文本的小模型图像转 Markdown 工具集。"
+      },
+      {
+        "name": "TexTeller",
+        "url": "https://github.com/OleehyO/TexTeller",
+        "license": "Apache-2.0",
+        "official_claim": "注重准确性和泛化性的图像转 LaTeX 模型。"
+      },
+      {
+        "name": "Marker",
+        "url": "https://github.com/datalab-to/marker",
+        "license": "GPL-3.0",
+        "official_claim": "在保留结构的同时将 PDF 转换为 Markdown 和 JSON。"
+      },
+      {
+        "name": "Surya",
+        "url": "https://github.com/datalab-to/surya",
+        "license": "Apache-2.0",
+        "official_claim": "支持 90 多种语言的 OCR、版面分析、阅读顺序和表格识别。"
+      },
+      {
+        "name": "faster-whisper",
+        "url": "https://github.com/SYSTRAN/faster-whisper",
+        "license": "MIT",
+        "official_claim": "基于 CTranslate2 的 Whisper 转录运行时。"
+      }
+    ]
+  },
+  "installed_versions": {
+    "paddlepaddle-gpu": "3.3.1",
+    "paddleocr": "3.7.0",
+    "paddlex": "3.7.2",
+    "texteller": "1.0.2",
+    "pix2text": "1.1.6",
+    "faster-whisper": "1.2.1"
+  },
+  "local_results": {
+    "synthetic_smoke": {
+      "fixture_id": "synthetic_chinese_text_formula_layout_v1",
+      "all_inference_steps_completed": true,
+      "text": {
+        "pp_ocrv6_medium_rec_cer": 0.2941,
+        "recognition_confidence": 0.8354,
+        "pp_ocrv6_medium_det_box_recall": 1.0
+      },
+      "formula": {
+        "pp_formulanet_plus_l": {"normalized_exact_match": false, "normalized_edit_distance": 6, "normalized_error_rate": 0.3333},
+        "texteller": {"normalized_exact_match": false, "normalized_edit_distance": 14, "normalized_error_rate": 0.7778, "device": "cpu"},
+        "pix2text": {"normalized_exact_match": false, "normalized_edit_distance": 34, "normalized_error_rate": 1.8889}
+      },
+      "layout": {
+        "pp_doclayoutv3_block_type_accuracy": 1.0,
+        "pp_doclayoutv3_reading_order_complete": true,
+        "paddleocr_vl_block_type_accuracy": 1.0,
+        "paddleocr_vl_reading_order_complete": true,
+        "paddleocr_vl_text_block_cer": 0.0
+      }
+    },
+    "representative_pages": {
+      "ground_truth_available": false,
+      "metric_limit": "这些任务卡只能证明端到端流程已完成；不声称 CER 或公式准确率。",
+      "fixtures": [
+        {"fixture_id": "bemd_combined_paper_source_p001_1783594210", "privacy": "non_private_exam_fixture", "elapsed_sec": 139.581, "successful_steps": 5, "failed_steps": 0},
+        {"fixture_id": "bemd_combined_answer_source_p003_1783594884", "privacy": "non_private_exam_fixture", "elapsed_sec": 112.432, "successful_steps": 5, "failed_steps": 0},
+        {"fixture_id": "ocr_trial_20260707_04", "privacy": "private_local_only", "elapsed_sec": 139.789, "successful_steps": 5, "failed_steps": 0}
+      ]
+    },
+    "speech_90s": {
+      "fixture_id": "public_chinese_technical_video_90s",
+      "ground_truth_available": false,
+      "faster-whisper-large-v3": {"elapsed_sec": 9.338, "segment_count": 47, "character_count": 516, "timestamps_complete": true, "device": "cuda"},
+      "faster-whisper-medium": {"elapsed_sec": 6.386, "segment_count": 47, "character_count": 515, "timestamps_complete": true, "device": "cuda"},
+      "pairwise_character_error_rate_vs_large_v3": 0.0504,
+      "metric_limit": "模型之间的成对差异率不是真值 CER。"
+    }
+  },
+  "selection_conclusions": {
+    "document_ocr": "保留 PaddleOCR-VL-1.6 + PP-DocLayoutV3 作为质量优先的整页主方案；合成版面和阅读顺序检查均已通过，所有代表性页面步骤均已完成。",
+    "text_ocr": "保留 PP-OCRv6 medium 检测器和识别器作为主要候选结果生成器，但单个合成中文文本行的 CER 为 0.2941，因此必须复核。",
+    "formula_ocr": "PP-FormulaNet_plus-L 作为主模型，TexTeller 作为唯一启用的交叉证据。Pix2Text 的归一化误差率为 1.8889，为三者最高，已按用户要求禁用；PP-FormulaNet_plus-L 与 TexTeller 冲突或出现上下标、分式、中文、核反应符号等风险时不得自动接受，必须保留待视觉复核。",
+    "speech_transcription": "保留 large-v3 作为质量优先默认模型，medium 作为更快的降级方案。由于没有人工转录真值，本次运行无法确定两者谁更准确。"
+  },
+  "known_failures_and_warnings": [
+    "Paddle GPU 推理已通过，但 Paddle 警告 wheel 由 cuDNN 9.9 编译，而当前机器可见运行时报告 cuDNN 9.5。",
+    "TexTeller 和 Pix2Text 在 CPU 上运行；ONNX Runtime 可见 AzureExecutionProvider 和 CPUExecutionProvider，不可见 CUDAExecutionProvider。",
+    "TexTeller 原始控制台入口在 Windows 上返回退出码 1，且没有可用 stderr；Skill wrapper 现已改用经验证的本地 Python API。",
+    "合成样本分数只是单样本冒烟证据，不得宣称为上游或生产基准测试分数。"
+  ]
+}

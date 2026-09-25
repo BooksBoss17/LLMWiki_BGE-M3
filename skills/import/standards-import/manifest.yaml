@@ -1,0 +1,37 @@
+name: standards-import
+category: import
+role: role-a-import-maintenance
+version: 1.2.0
+status: active
+locked: true
+description: 课程标准/高考评价体系/试题分析报告导入
+triggers:
+  - 课程标准
+  - 评价体系
+  - 标准导入
+  - 试题分析报告
+entry_skill: SKILL.md
+scripts:
+  - path: ../bemarkdown/scripts/diagnose_pdf.py
+    purpose: 统一诊断 text/mixed/image PDF 和公式风险
+  - path: ../bemarkdown/scripts/combine_image_pdf_ocr.py
+    purpose: 扫描、混合和公式风险 PDF 的组合 OCR 入口
+  - path: ../bemarkdown/scripts/convert_pdf_with_marker.py
+    purpose: marker 候选 wrapper，负责当前 CLI、CUDA 和 ASCII staging
+  - path: ../../_shared/scripts/import_handoff.py
+    purpose: 创建并校验 Role A 到 Role D 的强制 import handoff
+  - path: ../../learn/physics-knowledge-graph/scripts/update_graph.py
+    purpose: 在最终 RAG 重建前应用或审批受控图谱增量
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-11

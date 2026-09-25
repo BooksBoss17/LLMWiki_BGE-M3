@@ -1,0 +1,43 @@
+name: kb-framework-admin
+category: maintain
+role: role-c-kb-framework-admin
+version: 1.0.0
+status: active
+locked: false
+description: 知识库框架、Role A/B/D、registry、router、入口兼容层和验证维护
+triggers:
+  - 框架维护
+  - 角色C
+  - registry
+  - router
+  - 入口文件
+  - agent shim
+  - 角色AB测试
+  - 创建角色D
+  - 角色D路由
+  - 整合包
+  - 部署包
+  - 整合包完整性
+  - 整合包边界
+  - StudentDataSQL框架
+  - SQL学生数据库框架
+  - 学生数据schema
+  - StudentDataSQL脚本维护
+  - 成绩单预处理脚本
+  - 答题卡导入脚本
+entry_skill: SKILL.md
+scripts:
+  - path: ../../_shared/scripts/skill_retriever.py
+    purpose: route skill requests and run routing self-test
+  - path: ../../_shared/scripts/validate_skill_library.py
+    purpose: validate skill library structure
+runtime:
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-11

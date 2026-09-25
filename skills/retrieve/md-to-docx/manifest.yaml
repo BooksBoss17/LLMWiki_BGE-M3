@@ -1,0 +1,40 @@
+name: md-to-docx
+category: retrieve
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: Markdown 转 Word/PDF，OMML 公式和教学排版
+triggers:
+  - Word输出
+  - DOCX
+  - PDF
+  - OMML
+  - 排版
+  - OfficeCLI
+  - 视觉校验
+  - OpenXML校验
+  - 输出质量检查
+entry_skill: SKILL.md
+scripts:
+  - path: references/latex_to_omml.py
+    purpose: see SKILL.md
+  - path: scripts/md2docx.py
+    purpose: Markdown to DOCX/PDF converter with OMML, full-image embedding, validation layout, and OfficeCLI QA
+  - path: templates/md2docx_template.py
+    purpose: see SKILL.md
+  - path: ../../_shared/scripts/officecli_doc_qa.py
+    purpose: optional controlled OfficeCLI post-export OpenXML/visual QA
+runtime:
+  tool_ids:
+    - officecli-1.0.135
+    - libreoffice-26.2.4.2
+  models: []
+  envs: []
+  requirements: []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

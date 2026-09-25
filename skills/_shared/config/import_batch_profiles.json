@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "contract_version": "1.0",
+  "max_compact_result_bytes": 16384,
+  "profiles": {
+    "bemarkdown": {
+      "owner_skill": "bemarkdown",
+      "allowed_agent_roles": ["reviewer", "executor", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "unresolved_review_block",
+        "max_items": 5,
+        "max_pages": 20,
+        "max_unresolved_review_blocks": 5
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 4,
+        "max_parallel_executors": 1,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": false,
+        "allowed_payload_classes": ["artifact_reference", "review_block", "abstain_summary"],
+        "forbidden_payload_classes": ["document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "canonical_writer_only",
+        "canonical_writer": "skills/import/bemarkdown/scripts/apply_formula_reviews.py",
+        "max_artifacts": 5,
+        "allowed_source_path_ids": ["workspace.tmp", "library.source"],
+        "allowed_target_path_ids": ["workspace.tmp", "workspace.output"]
+      },
+      "max_result_issues": 5
+    },
+    "chinese-handwriting-formula-transcriber": {
+      "owner_skill": "chinese-handwriting-formula-transcriber",
+      "allowed_agent_roles": ["reviewer", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "deidentified_abstain_summary",
+        "max_items": 5,
+        "max_pages": 1,
+        "max_unresolved_review_blocks": 5
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 2,
+        "max_parallel_executors": 0,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": true,
+        "allowed_payload_classes": ["deidentified_abstain_summary", "artifact_reference"],
+        "forbidden_payload_classes": ["student_image", "ocr_text", "student_identifier", "document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "disabled_for_generic_agents",
+        "max_artifacts": 0,
+        "allowed_source_path_ids": ["workspace.tmp"],
+        "allowed_target_path_ids": []
+      },
+      "max_result_issues": 5
+    },
+    "textbook-import": {
+      "owner_skill": "textbook-import",
+      "allowed_agent_roles": ["reviewer", "executor", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "one_chapter_or_twenty_pages",
+        "max_items": 1,
+        "max_pages": 20,
+        "max_unresolved_review_blocks": 20
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 4,
+        "max_parallel_executors": 1,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": false,
+        "allowed_payload_classes": ["artifact_reference", "source_review", "image_classification", "wiki_draft_summary"],
+        "forbidden_payload_classes": ["document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "create_only_new_artifacts",
+        "max_artifacts": 20,
+        "allowed_source_path_ids": ["workspace.tmp", "library.source"],
+        "allowed_target_path_ids": ["workspace.tmp", "library.raw", "library.wiki"]
+      },
+      "max_result_issues": 20
+    },
+    "standards-import": {
+      "owner_skill": "standards-import",
+      "allowed_agent_roles": ["reviewer", "executor", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "one_top_level_section_or_twenty_pages",
+        "max_items": 1,
+        "max_pages": 20,
+        "max_unresolved_review_blocks": 20
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 4,
+        "max_parallel_executors": 1,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": false,
+        "allowed_payload_classes": ["artifact_reference", "hierarchy_review", "ocr_review"],
+        "forbidden_payload_classes": ["document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "create_only_new_artifacts",
+        "max_artifacts": 20,
+        "allowed_source_path_ids": ["workspace.tmp", "library.source"],
+        "allowed_target_path_ids": ["workspace.tmp", "library.raw", "library.wiki"]
+      },
+      "max_result_issues": 20
+    },
+    "exercise-bank-import": {
+      "owner_skill": "exercise-bank-import",
+      "allowed_agent_roles": ["reviewer", "executor", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "reviewed_exercise_bundle",
+        "max_items": 5,
+        "max_pages": 20,
+        "max_unresolved_review_blocks": 5
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 4,
+        "max_parallel_executors": 1,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": false,
+        "allowed_payload_classes": ["artifact_reference", "bounded_review", "abstain_summary"],
+        "forbidden_payload_classes": ["document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "canonical_writer_only",
+        "canonical_writer": "skills/import/exercise-bank-import/scripts/write_exercise_batch.py",
+        "max_artifacts": 5,
+        "allowed_source_path_ids": ["workspace.tmp", "library.source"],
+        "allowed_target_path_ids": ["library.raw"]
+      },
+      "max_result_issues": 5
+    },
+    "student-data-import": {
+      "owner_skill": "student-data-import",
+      "allowed_agent_roles": ["reviewer", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "deidentified_question_to_existing_kp_mapping",
+        "max_items": 20,
+        "max_pages": 1,
+        "max_unresolved_review_blocks": 20
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 2,
+        "max_parallel_executors": 0,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": true,
+        "allowed_payload_classes": ["deidentified_kp_mapping", "artifact_reference", "abstain_summary"],
+        "forbidden_payload_classes": ["student_row", "student_identifier", "database_key", "sqlcipher_payload", "ocr_text", "document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "disabled_for_generic_agents",
+        "max_artifacts": 0,
+        "allowed_source_path_ids": ["workspace.tmp"],
+        "allowed_target_path_ids": []
+      },
+      "max_result_issues": 20
+    },
+    "video-transcript-import": {
+      "owner_skill": "video-transcript-import",
+      "allowed_agent_roles": ["reviewer", "executor", "verifier"],
+      "agent_lifetime": "one_shot",
+      "batch": {
+        "unit": "one_video",
+        "max_items": 1,
+        "max_pages": 1,
+        "max_unresolved_review_blocks": 20
+      },
+      "concurrency": {
+        "max_parallel_reviewers": 4,
+        "max_parallel_executors": 1,
+        "max_parallel_verifiers": 1,
+        "serial_finalization": true,
+        "serial_stages": ["wiki", "graph", "rag"]
+      },
+      "privacy": {
+        "generic_agents_allowed": true,
+        "requires_deidentification": false,
+        "allowed_payload_classes": ["artifact_reference", "semantic_summary", "abstain_summary"],
+        "forbidden_payload_classes": ["full_transcript", "document_body", "image_bytes", "long_log", "secret"]
+      },
+      "writer": {
+        "mode": "create_only_new_artifacts",
+        "max_artifacts": 20,
+        "allowed_source_path_ids": ["workspace.tmp", "library.source"],
+        "allowed_target_path_ids": ["workspace.tmp", "library.raw", "library.wiki"]
+      },
+      "max_result_issues": 20
+    }
+  }
+}

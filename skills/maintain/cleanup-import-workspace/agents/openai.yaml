@@ -1,0 +1,4 @@
+interface:
+  display_name: "导入工作区清理"
+  short_description: "安全清理已完成导入任务的临时工作区"
+  default_prompt: "Use $cleanup-import-workspace to audit and clean one completed import task workspace."

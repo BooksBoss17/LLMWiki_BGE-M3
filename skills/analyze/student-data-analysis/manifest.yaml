@@ -1,0 +1,52 @@
+name: student-data-analysis
+category: analyze
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: StudentDataSQL 只读安全查询、脱敏报告、学生成绩/作业分析和单生考试知识点掌握报告调用
+triggers:
+  - SQL学生数据分析
+  - 学生成绩分析
+  - 作业分析
+  - 学生数据库分析
+  - 班级薄弱点
+  - 学生掌握度
+  - 单生期中知识点掌握
+  - 期中考试报告
+  - 期中报告
+  - 期中考试知识点掌握报告
+  - 座位号报告
+  - 按座位号生成报告
+  - 期中考掌握情况
+  - 学生知识点掌握情况
+  - 各知识点掌握情况
+  - STUDENT_DATA_DB_KEY
+  - 真实库密钥
+  - 学生数据密钥
+  - 考试小题分析
+  - 方法错误分析
+  - 答题卡分析
+  - 考试成绩分析
+  - 试卷答题卡成绩分析
+  - 失分分析
+  - 小题分分析
+entry_skill: SKILL.md
+scripts:
+  - ../../../StudentDataSQL/scripts/query_student_data.py
+  - ../../../StudentDataSQL/scripts/export_safe_report.py
+  - ../../../StudentDataSQL/scripts/export_exam_student_mastery.py
+runtime:
+  models: []
+  envs: []
+requirements:
+  - python-docx
+  - matplotlib
+  - pywin32
+  - PyMuPDF
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_root_studentdatasql_scripts
+  models: never_inline
+last_verified: 2026-07-06

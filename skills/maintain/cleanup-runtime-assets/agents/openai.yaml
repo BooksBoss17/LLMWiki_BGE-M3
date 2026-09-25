@@ -1,0 +1,4 @@
+interface:
+  display_name: "Runtime 资产清理"
+  short_description: "受控审计并清理临时文件、runtime 缓存和重复资产"
+  default_prompt: "Use $cleanup-runtime-assets to dry-run and safely clean redundant LLMWiki runtime assets."

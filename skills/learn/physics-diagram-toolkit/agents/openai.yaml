@@ -1,0 +1,4 @@
+interface:
+  display_name: "物理示意图生成"
+  short_description: "生成题目/解析物理图并自动校验几何关系"
+  default_prompt: "使用 $physics-diagram-toolkit 的 strong 档，根据用途生成题目黑白图或解析彩色图，检索并复核题库参考图，通过自动几何断言和 hash 绑定语义复核后再发布。"

@@ -1,0 +1,31 @@
+name: teaching-ppt-analysis
+category: analyze
+role: role-b-retrieval-calling
+version: 1.0.0
+status: active
+locked: false
+description: 课堂 PPT 教学分析与知识库对照
+triggers:
+  - PPT分析
+  - 课件分析
+  - 课堂投影
+  - 教学逻辑
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/extract_pptx_structure.py
+    purpose: extract slide text, notes, media inventory, and structure reports from PPTX
+  - path: scripts/render_pdf_pages.py
+    purpose: render PDF-exported slides to PNG pages and contact sheet for visual review
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-04

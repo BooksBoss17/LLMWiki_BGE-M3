@@ -1,0 +1,107 @@
+{"query":"我需要导入一套高一物理试卷，抽取题目并打知识点标签","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["taxonomy/exercise-knowledge-tags/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"把这个 DOCX 试卷入库，题目和答案解析要配对","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"录入题库时把所有示意图同步加入视觉 embedding 索引","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["taxonomy/exercise-knowledge-tags/SKILL.md","learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"期中考试卷导入并生成试卷分析报告","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"期中考试卷导入并生成试卷设计分析报告","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"把试卷分析报告导入 StudentDataSQL 试卷报告目录","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"已有题库里的题目需要补 knowledge_points 和 ai_extra_tags","expected_primary":"taxonomy/exercise-knowledge-tags/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"生成一份高一期末复习讲义，并导出 Word","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":["retrieve/md-to-docx/SKILL.md"],"min_confidence":0.7}
+{"query":"生成一份复习讲义并正式交付Word和PDF，交付前做输出质量检查","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":["retrieve/md-to-docx/SKILL.md"],"min_confidence":0.7}
+{"query":"把这份 Markdown 讲义导出成 DOCX 和 PDF","expected_primary":"retrieve/md-to-docx/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"把这份 Word 输出用 OfficeCLI 做视觉校验和 OpenXML 校验","expected_primary":"retrieve/md-to-docx/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"帮我解释这道圆周运动题，先查知识库","expected_primary":"retrieve/llmwiki-rag-retrieval/SKILL.md","expected_queued":[],"min_confidence":0.55}
+{"query":"导入鲁教版必修一教材，按章节拆分并清理 OCR","expected_primary":"import/textbook-import/SKILL.md","expected_queued":["maintain/llmwiki-maintenance/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"导入课程标准和评价体系文件","expected_primary":"import/standards-import/SKILL.md","expected_queued":["maintain/llmwiki-maintenance/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"B站教学视频转写，抽帧并做关键帧验证","expected_primary":"import/video-transcript-import/SKILL.md","expected_queued":["maintain/llmwiki-maintenance/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"检查 Wiki 死链、孤立页和视频三页结构","expected_primary":"maintain/llmwiki-maintenance/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"raw 更新后重建 RAG 向量索引和 FAISS","expected_primary":"maintain/rag-management/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"分析这份课堂 PPT 的教学逻辑和投影可读性","expected_primary":"analyze/teaching-ppt-analysis/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"把 PDF 里的公式和 WMF 图片转换成干净 Markdown","expected_primary":"import/bemarkdown/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"把这份图片型PDF扫描试卷先OCR转换成Markdown","expected_primary":"import/bemarkdown/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"图片型PDF组合OCR转写并生成VLM复核任务","expected_primary":"import/bemarkdown/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"整理讲义格式，要求宋体和 Times New Roman","expected_primary":"retrieve/teaching-output-format/SKILL.md","expected_queued":[],"min_confidence":0.6}
+{"query":"整理教学资料的交付规范和输出质量要求","expected_primary":"retrieve/teaching-output-format/SKILL.md","expected_queued":[],"min_confidence":0.6}
+{"query":"更新入口文件并测试角色AB的路由效果","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"更新 SCHEMA 和 AGENTS 入口规范","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"整理临时代码，能整合就整合，没用就归档","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"维护 skills registry 和 skill_retriever 路由规则","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"创建 git 仓库并配置 .gitignore","expected_primary":"maintain/git-repository-management/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"检查 git status 并提交框架变更","expected_primary":"maintain/git-repository-management/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"分析学生成绩和作业薄弱点，输出脱敏班级周报","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"搭建 SQL 学生数据库框架并更新路由规则","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"实现两班两场考试成绩单和期中答题卡导入预处理","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"整理学校成绩单并生成 seat-only 座位号导入 CSV","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"先分析这次考试的试卷和他的答题卡，综合起来分析他的成绩","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"分析任意一名学生期中考试各知识点掌握情况","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"设置StudentDataSQL真实库key并生成期中单生知识点报告","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"导入高二02班名单到StudentDataSQL","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"导入期中考试小题分和答题卡manifest","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"把StudentDataSQL真实数据导入加密真实库并清理imports","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"回填StudentDataSQL考试知识点映射，复用题库已有knowledge_point_ids","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"分析这次考试小题分失分情况","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"修改StudentDataSQL成绩单预处理脚本","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"检查整合包完整性，确认没有漏更新，也不要带生产数据","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"用户授意更新整合包并同步依赖脚本","expected_primary":"maintain/integration-package-update/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"讨论整合包部署问题","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"生成02班36号期中考试知识点掌握报告","expected_primary":"analyze/student-data-analysis/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"维护 md-to-docx 的 OMML转换器，修复 LaTeX-to-OMML 公式导出","expected_primary":"retrieve/md-to-docx/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"识别学生答题卡里的中文手写和手写物理公式，输出机器转写JSON","expected_primary":"import/chinese-handwriting-formula-transcriber/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"本地运行PaddleOCR-VL和PP-FormulaNet扫描答题卡作答区，不上传学生数据","expected_primary":"import/chinese-handwriting-formula-transcriber/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"把图片型PDF试卷用本地OCR兜底转换成Markdown，marker质量不足时再用PaddleOCR-VL复核","expected_primary":"import/bemarkdown/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"用PaddleOCR-VL复核扫描PDF答案里的公式并输出干净Markdown","expected_primary":"import/bemarkdown/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"导入图片型PDF试卷到题库并生成试卷分析报告","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"创建角色D并调整路由","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"Role C 管理员修改角色D strong curator 权限","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"拍照识别并讲解这道题，先给我分层提示","expected_primary":"learn/physics-question-tutoring/SKILL.md","expected_queued":["retrieve/llmwiki-rag-retrieval/SKILL.md"],"min_confidence":0.7}
+{"query":"给这张图画受力箭头","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"给原图建立精确坐标并添加运动学批注","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"给原图加精确坐标和受力批注","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"检索相似题图后生成原创物理示意图","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"绘制一张 v-t 函数图和实验数据图","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"生成 v-t 图和实验数据折线","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"生成讲义并为原创题配一张原创物理图","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":["learn/physics-diagram-toolkit/SKILL.md"],"min_confidence":0.7}
+{"query":"生成讲义并配一张 v-t 图","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":["learn/physics-diagram-toolkit/SKILL.md"],"min_confidence":0.7}
+{"query":"画一张受力图并写入题库详解","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"修复题库里的错误原图并覆盖写回","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"Role C 扩大 strong physics-diagram-toolkit 的题库写回权限","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"修改 MC0001426 的解析","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"继续校对并修改题库的题干答案与详解，必要时补充题目示意图","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"继续校对题库","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"继续 Role D strong 校对题干答案详解","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"review and modify exercise question stem answer detailed solution","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"modify MC analysis","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"proofread question bank answer","expected_primary":"learn/exercise-solution-curation/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"更新高中物理知识关系图谱","expected_primary":"learn/physics-knowledge-graph/SKILL.md","expected_queued":["maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"合并两个知识点标签","expected_primary":"taxonomy/exercise-knowledge-tags/SKILL.md","expected_queued":["learn/physics-knowledge-graph/SKILL.md"],"min_confidence":0.7}
+{"query":"生成牛顿力学章节知识清单并导出Word和PDF","expected_primary":"retrieve/knowledge-checklist/SKILL.md","expected_queued":["retrieve/md-to-docx/SKILL.md","retrieve/teaching-output-format/SKILL.md"],"min_confidence":0.7}
+{"query":"整理单双杆和导体棒模型的知识清单并配中文示意图","expected_primary":"retrieve/knowledge-checklist/SKILL.md","expected_queued":["retrieve/md-to-docx/SKILL.md","retrieve/teaching-output-format/SKILL.md"],"min_confidence":0.7}
+{"query":"系统备课牛顿运动定律并基于知识库多次检索生成讲义","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"把已有Markdown排版为Word，不新增物理内容","expected_primary":"retrieve/md-to-docx/SKILL.md","expected_queued":[],"min_confidence":0.65}
+{"query":"用题库原题和原图生成一份牛顿运动定律作业","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"生成一份原创物理练习，题目和题图都需要原创","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"题库覆盖不足，先询问我确认后再补原创题完成组卷","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"Role B 组题前发现题干缺失，返回 Role A 修复后再生成讲义","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"生成作业时发现原图错配，先回退 Role A 修复题库","expected_primary":"import/exercise-bank-import/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"Role B 组题的 skill 流程有问题，请 Role C 更新后继续组题","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"生成讲义组题的 skill 流程有问题，需要更新流程后继续","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"使用 bilidown CLI 直连下载高音质 B站视频","expected_primary":"import/video-transcript-import/SKILL.md","expected_queued":["maintain/llmwiki-maintenance/SKILL.md","learn/physics-knowledge-graph/SKILL.md","maintain/rag-management/SKILL.md"],"min_confidence":0.7}
+{"query":"生成一份匀加速直线运动讲义，练习和答案分开输出，不分学生版教师版","expected_primary":"retrieve/lecture-generation/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"统一讲义和作业的格式规范：练习不附答案，答案独立排版","expected_primary":"retrieve/teaching-output-format/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"清理这个已经完成的题库导入任务临时文件，并保留 checkpoint 和 approval","expected_primary":"maintain/cleanup-import-workspace/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"为视频导入任务生成 cleanup_manifest，不要自动删除","expected_primary":"maintain/cleanup-import-workspace/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"全局清理 tmp、共享 runtime 和旧版便携程序残留","expected_primary":"maintain/cleanup-runtime-assets/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"清理 RAG 缓存和旧日志，但保护当前 FAISS 索引和模型","expected_primary":"maintain/cleanup-runtime-assets/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"我们清理一下旧的临时文件吧","expected_primary":"maintain/cleanup-runtime-assets/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"统计知识库存储空间并清理冗余文件和重复模型缓存","expected_primary":"maintain/cleanup-runtime-assets/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"启动一个 Role C agent campaign，把题库修正拆成一次性 executor 和独立 auditor 批次","expected_primary":"maintain/agent-campaign-orchestration/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"继续上次的多 agent campaign，检查各批次进度并只重试失败任务","expected_primary":"maintain/agent-campaign-orchestration/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"继续 P0/P1 批量修正，按5题一批先暂存再独立审计","expected_primary":"maintain/agent-campaign-orchestration/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"新增一个 Role C skill，并更新 registry、router 和 validator","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"清理 StudentDataSQL runtime imports 中已归档的加密导入文件","expected_primary":"import/student-data-import/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"生成作业流程有问题，练习里泄露题库ID并添加了多余答题区横线","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"作业生成流程问题：学生文件出现原题号和题源标记","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"生成课后练习时答题区错误，解答题下方不应有横线","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":["retrieve/lecture-generation/SKILL.md"],"min_confidence":0.7}
+{"query":"分析物理示意图生成问题原因并更新 physics-diagram-toolkit skill 和 validator","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"升级物理绘图 schema 和几何验证门禁","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"修复绘图 router 的角色路由规则","expected_primary":"maintain/kb-framework-admin/SKILL.md","expected_queued":[],"min_confidence":0.7}
+{"query":"画一道平抛题的黑白题目情境图","expected_primary":"learn/physics-diagram-toolkit/SKILL.md","expected_queued":[],"min_confidence":0.7}

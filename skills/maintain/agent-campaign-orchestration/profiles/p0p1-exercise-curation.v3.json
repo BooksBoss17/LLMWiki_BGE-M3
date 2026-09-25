@@ -1,0 +1,50 @@
+{
+  "schema_version": 3,
+  "kind": "campaign_profile",
+  "profile_id": "p0p1-exercise-curation",
+  "executor_skills": [
+    "import/exercise-bank-import",
+    "learn/exercise-solution-curation"
+  ],
+  "auditor_skills": [
+    "learn/exercise-solution-curation",
+    "maintain/agent-campaign-orchestration"
+  ],
+  "allowed_paths": [
+    "raw/exercises"
+  ],
+  "rollout_policy": {
+    "canary_campaigns": [
+      "p0p1-optics",
+      "p0p1-thermal"
+    ],
+    "required_complete_batches_each": 1,
+    "complex_canary_batch_size": 1,
+    "max_parallel_campaigns_after_canary": 4
+  },
+  "model_policy": {
+    "bounded": "gpt-5.6-luna/xhigh",
+    "ambiguous": "gpt-5.6-sol/medium",
+    "complex": "gpt-5.6-sol/high",
+    "critical": "gpt-5.6-sol/xhigh"
+  },
+  "writer": {
+    "mode": "python",
+    "script": "skills/learn/exercise-solution-curation/scripts/curate_exercise.py",
+    "timeout_seconds": 600,
+    "arguments": [
+      "--proposal", "{proposal_path}",
+      "--apply", "--teacher-authorized",
+      "--batch-card", "{batch_card_path}",
+      "--batch-card-sha256", "{batch_card_sha256}",
+      "--audit-result", "{audit_result_path}",
+      "--audit-result-sha256", "{audit_result_sha256}",
+      "--authorization", "{authorization_path}",
+      "--authorization-sha256", "{authorization_sha256}",
+      "--dry-run-receipt", "{dry_run_path}",
+      "--dry-run-receipt-sha256", "{dry_run_sha256}",
+      "--receipt-out", "{receipt_path}",
+      "--json"
+    ]
+  }
+}

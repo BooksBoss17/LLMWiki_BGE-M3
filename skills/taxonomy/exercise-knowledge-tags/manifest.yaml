@@ -1,0 +1,37 @@
+name: exercise-knowledge-tags
+category: taxonomy
+role: role-d-physics-learning
+version: 2.2.0
+status: active
+locked: false
+description: 正式知识点与稳定 kp_id 唯一写入入口，并支持受控 ai_extra_tags
+triggers:
+  - 知识点标签
+  - 题库分类
+  - knowledge_points
+  - ai_extra_tags
+  - knowledge_point_ids
+  - 合并知识点标签
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/manage_taxonomy.py
+    purpose: 管理稳定 kp_id registry、alias/deprecated 迁移、题目正式双字段和 ai_extra_tags
+runtime:
+  models:
+    []
+  envs:
+    []
+  requirements:
+    []
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+authorization:
+  apply_requires: --teacher-authorized
+  destructive_apply_requires: --teacher-authorized --allow-destructive
+model_profiles:
+  default: weak
+  supported: [weak, strong]
+last_verified: 2026-07-12

@@ -1,0 +1,108 @@
+name: bemarkdown
+category: import
+role: role-a-import-maintenance
+version: 2.10.0
+status: active
+locked: true
+description: Word/PDF→Markdown，OMML/EQ 与 Equation OLE/MTEF v3/v5 结构转换、WMF 三源复核、图片型 PDF 组合 OCR 和失败阻断
+triggers:
+  - DOCX
+  - PDF
+  - 图片型PDF
+  - 扫描PDF
+  - PDF图片转写
+  - OMML
+  - EQ
+  - WMF
+  - MTEF
+  - MathType
+  - Equation OLE
+  - OCR
+  - 本地OCR兜底
+  - PaddleOCR-VL PDF兜底
+  - PP-FormulaNet
+  - TexTeller
+  - 图片型PDF组合OCR
+  - 组合OCR
+  - 组合转写
+  - VLM复核任务
+  - Markdown转换
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/run_bemarkdown_with_shared_runtime.bat
+    purpose: 使用共享模型运行库执行 BeMarkdown 批量转换
+  - path: scripts/batch_convert_all.py
+    purpose: DOCX 批量转换、MTEF shadow/strict/off、audit-only、resume/rebuild 与原子完成门禁
+  - path: scripts/mtef_formula_audit.py
+    purpose: DOCX/OLE/MTEF/WMF 四层 hash、SQLite WAL、去重续跑、三源共识和审计导出
+  - path: scripts/mtef_worker.rb
+    purpose: 使用 bundled JRuby 对最多 512 个唯一 MTEF v3/v5 完整消费并输出 XML AST
+  - path: scripts/mtef_mathml.py
+    purpose: 严格映射 MTEF XML AST 到 MathML 和 KB-LaTeX，未知模板或字形阻断
+  - path: scripts/omml_docx_to_md.py
+    purpose: DOCX 结构化公式、转换报告、阻断门禁和图片转 Markdown
+  - path: scripts/math_conversion_contract.py
+    purpose: OMML/EQ 统一结果、异常和 hash 绑定兼容覆盖契约
+  - path: scripts/omml_to_latex.py
+    purpose: 按 ECMA-376/ISO 29500 转换 OMML 为可移植 LaTeX
+  - path: scripts/eq_field_to_latex.py
+    purpose: 按 Microsoft Word 官方语义转换 EQ 域代码
+  - path: scripts/audit_math_conversion.py
+    purpose: 只读审计 DOCX 的 OMML/EQ 覆盖、阻断项和历史兼容候选
+  - path: ../../_shared/scripts/libreoffice_runner.py
+    purpose: Batik/GDI 原生边界批量渲染、UTF-8 长路径 argfile、soffice.com 诊断回退、源哈希与几何门禁
+  - path: scripts/wmf_to_png.py
+    purpose: 完整画面无裁切批量渲染 WMF 并生成 hash/geometry manifest
+  - path: scripts/batch_ocr_wmf.py
+    purpose: WMF 渲染图批量双引擎候选、共识与 VLM 任务
+  - path: scripts/formula_ensemble.py
+    purpose: 持久调用 PP-FormulaNet、TexTeller，按精确 PNG SHA-256 去重并输出统一 hash-bound schema
+  - path: scripts/fix_chinese_subscripts.py
+    purpose: 按 OCR 引擎检测和修复中文下标常见误识别
+  - path: scripts/formula_candidate_utils.py
+    purpose: 对图片公式候选做保守风险分级并生成多引擎/VLM 复核任务
+  - path: scripts/apply_formula_reviews.py
+    purpose: 校验 MTEF/WMF/PNG/runtime hash 并回灌 reviewed_final，兼容旧单文档复核且阻断未解决项
+  - path: scripts/replace_images_with_latex.py
+    purpose: PNG alt 公式转 LaTeX
+  - path: scripts/fix_plain_superscripts.py
+    purpose: 无歧义纯文本上标修复
+  - path: scripts/diagnose_pdf.py
+    purpose: 诊断 PDF 文本层、图片层和公式风险，用于选择转换路径
+  - path: scripts/combine_image_pdf_ocr.py
+    purpose: 组合 marker 与 transcriber 结构化候选，生成候选矩阵、冲突块、VLM 任务和质量报告
+  - path: scripts/summarize_combined_ocr_waves.py
+    purpose: 从各 wave 当前 final_quality_report.json 重建最终组合 OCR 汇总
+  - path: scripts/convert_pdf_with_marker.py
+    purpose: marker OCR 运行器，检查 Python310、CUDA 和 force-OCR 参数
+  - path: scripts/pdf_text_to_md.py
+    purpose: PDF 页面渲染和 VLM 辅助兜底
+runtime:
+  tool_ids:
+    - libreoffice-26.2.4.2
+    - temurin-jre-21.0.11+10
+    - jruby-complete-9.3.8.0
+    - apache-batik-1.19
+    - wmf-native-adapter-1.0.0
+    - transpect-mathtype-0.0.7.5
+    - olefile-0.47
+  model_ids:
+    - marker-pdf
+    - surya-ocr
+    - pp-formulanet-plus-l
+    - texteller-1.0.2
+    - paddleocr-vl-1.6
+  envs:
+    - path: ../../_shared/model-tools/runtime/envs/document-stt-py310
+      type: copied-shared
+    - path: ../../_shared/model-tools/runtime/envs/formula-py311
+      type: copied-shared
+  requirements:
+    - ../../_shared/model-tools/requirements/document-stt-py310.txt
+    - ../../_shared/model-tools/requirements/formula-py311.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: never_inline
+  models: never_inline
+last_verified: 2026-07-17

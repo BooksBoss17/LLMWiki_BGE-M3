@@ -1,0 +1,44 @@
+# Canonical MCP / plugin requirements for LLMWiki_BGE-M3 skills.
+# Agents read skill manifest.yaml first; if a manifest lists mcp_servers,
+# resolve the server details here before starting that workflow.
+version: 2
+last_verified: 2026-07-14
+servers:
+  - name: bilibili-search
+    type: mcp
+    transport: stdio
+    required_by:
+      - import/video-transcript-import
+    command: bundled-python
+    args:
+      - skills/_shared/model-tools/scripts/mcp_server.py
+      - --server
+      - bilibili-search
+    runtime_node_component: node-24.16.0
+    runtime_server_component: bilibili-mcp-js-0.1.3
+    runtime_python_component: python-3.11.15-win-x64
+    launcher_script: _shared/model-tools/scripts/mcp_server.py
+    cli_fallback_script: _shared/model-tools/scripts/mcp_call.py
+    npm_package: bilibili-mcp-js
+    npm_version_checked: 0.1.3
+    dependency_mode: bundled
+    agent_config_command: python skills/_shared/scripts/configure_agent_mcp.py --agent <agent> --apply --user-authorized --json
+    hermes_list_command: hermes mcp list
+    required_tools:
+      - mcp_bilibili_search_bilibili_search_summary
+      - mcp_bilibili_search_bilibili_video_detail
+      - mcp_bilibili_search_bilibili_user_complete
+      - mcp_bilibili_search_bilibili_user_info
+      - mcp_bilibili_search_bilibili_user_stat
+      - mcp_bilibili_search_bilibili_hot
+      - mcp_bilibili_search_bilibili_bangumi_timeline
+    smoke_test:
+      tool: mcp_bilibili_search_bilibili_search_summary
+      args:
+        keyword: 高中物理
+        page: 1
+        limit: 1
+    fallback_if_native_mcp_unavailable:
+      - python skills/_shared/model-tools/scripts/mcp_call.py --server bilibili-search --tool <tool> --args-json <json> --json
+      - Use the local download script after BV/cid are known: import/video-transcript-import/scripts/bilibili_playurl_download.py
+    notes: Candidate discovery and metadata use the bundled Node/MCP runtime; downloads remain handled by bilibili-api-python / playurl script.

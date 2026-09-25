@@ -1,0 +1,4 @@
+faster-whisper==1.2.1
+marker-pdf==1.10.2
+surya-ocr==0.17.1
+transformers==4.57.6

@@ -1,0 +1,2 @@
+assignment_id,class_id,term_id,title,assignment_type,assigned_at,due_at,student_id,status,submitted_at,completion_rate,teacher_score,time_spent_min,Q1_correct,Q1_question_id,Q1_attempt_count,Q1_error_type,correction_status,corrected_at,correction_quality
+demo_assignment_001,demo_class_001,demo_term_2026_spring,合成受力分析作业,daily,2026-03-16,2026-03-17,demo_term_2026_spring_demo_class_001_F_seat01,submitted,2026-03-17 20:00,1.0,92,35,1,q_force_001,1,,completed,2026-03-18,4

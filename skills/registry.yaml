@@ -1,0 +1,524 @@
+version: 1
+project_layout: ../PROJECT_LAYOUT.yaml
+kb_root_id: project.root
+skills_root_id: skills.root
+load_strategy: router_reads_registry_then_single_skill
+
+roles:
+  role-a-import-maintenance:
+    path: roles/role-a-import-maintenance.md
+    description: 知识内容导入、raw/Wiki/RAG 同步、导入类 skill 维护
+  role-b-retrieval-calling:
+    path: roles/role-b-retrieval-calling.md
+    description: 检索调用、备课、讲义、组卷、输出、安全学生数据分析
+  role-c-kb-framework-admin:
+    path: roles/role-c-kb-framework-admin.md
+    description: 知识库框架、skills 架构、router、入口兼容、多 agent campaign 编排、角色 A/B/D 测试、Git 子技能
+  role-d-physics-learning:
+    path: roles/role-d-physics-learning.md
+    description: weak/strong 分档学生物理辅导、确定性绘图、题库解析、稳定知识点标签和受控知识图谱
+
+skills:
+  - name: bemarkdown
+    category: import
+    role: role-a-import-maintenance
+    path: import/bemarkdown/SKILL.md
+    manifest: import/bemarkdown/manifest.yaml
+    triggers:
+      - DOCX
+      - PDF
+      - 图片型PDF
+      - 扫描PDF
+      - PDF图片转写
+      - OMML
+      - EQ
+      - MTEF
+      - MathType
+      - Equation OLE
+      - WMF
+      - OCR
+      - 本地OCR兜底
+      - PaddleOCR-VL PDF兜底
+      - 图片型PDF组合OCR
+      - 组合OCR
+      - 组合转写
+      - VLM复核任务
+      - Markdown转换
+
+  - name: chinese-handwriting-formula-transcriber
+    category: import
+    role: role-a-import-maintenance
+    path: import/chinese-handwriting-formula-transcriber/SKILL.md
+    manifest: import/chinese-handwriting-formula-transcriber/manifest.yaml
+    triggers:
+      - 中文手写转写
+      - 手写公式OCR
+      - 学生答题卡识别
+      - 答题卡OCR
+      - 物理公式LaTeX转写
+      - PaddleOCR-VL
+      - PP-OCRv6
+      - PP-FormulaNet
+      - TexTeller
+
+  - name: textbook-import
+    category: import
+    role: role-a-import-maintenance
+    path: import/textbook-import/SKILL.md
+    manifest: import/textbook-import/manifest.yaml
+    triggers:
+      - 教材导入
+      - 课本入库
+      - 章节拆分
+      - OCR清理
+
+  - name: standards-import
+    category: import
+    role: role-a-import-maintenance
+    path: import/standards-import/SKILL.md
+    manifest: import/standards-import/manifest.yaml
+    triggers:
+      - 课程标准
+      - 评价体系
+      - 标准导入
+      - 试题分析报告
+
+  - name: exercise-bank-import
+    category: import
+    role: role-a-import-maintenance
+    path: import/exercise-bank-import/SKILL.md
+    manifest: import/exercise-bank-import/manifest.yaml
+    triggers:
+      - 题库导入
+      - 题库录入
+      - 试卷入库
+      - 考试卷分析报告
+      - 试卷设计分析报告
+      - 试卷导入分析报告
+      - 试卷报告导入SQL
+      - StudentDataSQL试卷报告
+      - 期中考试卷导入
+      - 月考试卷导入
+      - 模拟考试卷导入
+      - 讲义题目提取
+      - 题目配对
+      - 组题前题库修复
+      - 题干缺失修复
+      - 原图错配修复
+      - Role B组题缺陷回退
+      - 题库图片视觉索引同步
+
+  - name: student-data-import
+    category: import
+    role: role-a-import-maintenance
+    path: import/student-data-import/SKILL.md
+    manifest: import/student-data-import/manifest.yaml
+    triggers:
+      - StudentDataSQL导入
+      - 学生数据导入
+      - 名册导入
+      - 成绩单导入
+      - 小题分导入
+      - 答题卡manifest导入
+      - 答题卡导入
+      - 学校成绩单
+      - 考试成绩导入
+      - StudentDataSQL真实数据导入
+      - 真实数据加密归拢
+      - 加密真实库导入
+      - imports清理
+      - seat-only
+      - 座位号导入
+      - 考试知识点映射回填
+      - StudentDataSQL知识点回填
+
+  - name: video-transcript-import
+    category: import
+    role: role-a-import-maintenance
+    path: import/video-transcript-import/SKILL.md
+    manifest: import/video-transcript-import/manifest.yaml
+    triggers:
+      - B站视频导入
+      - 视频转写
+      - 抽帧
+      - faster-whisper
+      - VLM
+      - 关键帧
+      - bilidown CLI
+      - 高音质视频下载
+
+  - name: llmwiki-rag-retrieval
+    category: retrieve
+    role: role-b-retrieval-calling
+    path: retrieve/llmwiki-rag-retrieval/SKILL.md
+    manifest: retrieve/llmwiki-rag-retrieval/manifest.yaml
+    triggers:
+      - 知识库检索
+      - RAG
+      - 解题
+      - 答疑
+      - 备课检索
+
+  - name: lecture-generation
+    category: retrieve
+    role: role-b-retrieval-calling
+    path: retrieve/lecture-generation/SKILL.md
+    manifest: retrieve/lecture-generation/manifest.yaml
+    triggers:
+      - 讲义生成
+      - 作业生成
+      - 复习讲义
+      - 组卷
+      - 练习卷
+      - 题库原题组题
+      - 原创组题
+      - 题库原题
+      - 原题原图
+      - 原创题
+      - 原创练习
+      - 备课
+      - 输出
+
+  - name: knowledge-checklist
+    category: retrieve
+    role: role-b-retrieval-calling
+    path: retrieve/knowledge-checklist/SKILL.md
+    manifest: retrieve/knowledge-checklist/manifest.yaml
+    triggers:
+      - 知识清单
+      - 章节知识清单
+      - 全册知识清单
+      - 考点梳理
+      - 方法总结
+      - 复习清单
+      - 教材总结
+      - 重点知识
+      - 易错点
+      - 单杆
+      - 双杆
+      - 单双杆
+      - 单杆问题
+      - 双杆问题
+      - 单双杆问题
+      - 双棒
+      - 导体棒
+      - 导体棒问题
+      - 杆轨模型
+      - 电磁感应综合
+      - 终端速度
+      - 安培力
+      - 动量能量
+      - 知识清单Word
+      - 知识清单PDF
+      - 知识清单示意图
+
+  - name: md-to-docx
+    category: retrieve
+    role: role-b-retrieval-calling
+    path: retrieve/md-to-docx/SKILL.md
+    manifest: retrieve/md-to-docx/manifest.yaml
+    triggers:
+      - Word输出
+      - DOCX
+      - PDF
+      - OMML
+      - 排版
+      - OfficeCLI
+      - 视觉校验
+      - OpenXML校验
+      - 输出质量检查
+
+  - name: teaching-output-format
+    category: retrieve
+    role: role-b-retrieval-calling
+    path: retrieve/teaching-output-format/SKILL.md
+    manifest: retrieve/teaching-output-format/manifest.yaml
+    triggers:
+      - 试卷格式
+      - 讲义格式
+      - 宋体
+      - Times New Roman
+      - 格式规范
+      - 交付规范
+      - 输出质量
+
+  - name: llmwiki-maintenance
+    category: maintain
+    role: role-a-import-maintenance
+    path: maintain/llmwiki-maintenance/SKILL.md
+    manifest: maintain/llmwiki-maintenance/manifest.yaml
+    triggers:
+      - Wiki维护
+      - 死链
+      - 孤立页
+      - 图谱健康
+      - 视频三页
+
+  - name: rag-management
+    category: maintain
+    role: role-a-import-maintenance
+    path: maintain/rag-management/SKILL.md
+    manifest: maintain/rag-management/manifest.yaml
+    triggers:
+      - RAG重建
+      - BGE-M3
+      - FAISS
+      - 向量索引
+
+  - name: cleanup-import-workspace
+    category: maintain
+    role: role-a-import-maintenance
+    path: maintain/cleanup-import-workspace/SKILL.md
+    manifest: maintain/cleanup-import-workspace/manifest.yaml
+    triggers:
+      - 清理导入任务临时文件
+      - 清理已完成导入任务
+      - 清理题库导入临时文件
+      - 清理视频导入临时文件
+      - cleanup manifest
+
+  - name: cleanup-runtime-assets
+    category: maintain
+    role: role-c-kb-framework-admin
+    path: maintain/cleanup-runtime-assets/SKILL.md
+    manifest: maintain/cleanup-runtime-assets/manifest.yaml
+    triggers:
+      - 全局清理tmp
+      - 清理共享runtime
+      - 清理旧版便携程序
+      - 清理RAG缓存
+      - 清理程序残留
+      - runtime cleanup
+      - 存储空间清理
+      - 冗余文件清理
+      - 重复模型缓存
+
+  - name: kb-framework-admin
+    category: maintain
+    role: role-c-kb-framework-admin
+    path: maintain/kb-framework-admin/SKILL.md
+    manifest: maintain/kb-framework-admin/manifest.yaml
+    triggers:
+      - 框架维护
+      - 角色C
+      - registry
+      - router
+      - 入口文件
+      - AGENTS.md
+      - SCHEMA.md
+      - agent shim
+      - 角色AB测试
+      - 创建角色D
+      - 角色D路由
+      - 修改角色D权限
+      - 强模型权限
+      - 临时代码
+      - 临时脚本
+      - temp-script
+      - 整合包
+      - 部署包
+      - 整合包完整性
+      - 整合包边界
+      - 新设备整合包
+      - StudentDataSQL框架
+      - SQL学生数据库框架
+      - 学生数据schema
+      - StudentDataSQL脚本维护
+      - 成绩单预处理脚本
+      - 答题卡导入脚本
+      - 组题流程问题
+      - 生成skill问题
+      - 生成作业流程问题
+      - 作业生成流程问题
+      - 题源标记泄露
+      - 答题区错误
+      - 角色回退错误
+      - validator
+      - 验证器
+      - skill门禁
+      - schema升级
+
+  - name: agent-campaign-orchestration
+    category: maintain
+    role: role-c-kb-framework-admin
+    path: maintain/agent-campaign-orchestration/SKILL.md
+    manifest: maintain/agent-campaign-orchestration/manifest.yaml
+    triggers:
+      - agent campaign
+      - 多 agent 编排
+      - 多智能体任务编排
+      - campaign 批次调度
+      - campaign 续跑
+      - campaign 状态汇总
+      - 一次性子agent
+      - 子agent审计
+      - 长任务调度
+      - P0/P1 批量修正
+      - 批量题库维护审计
+      - 导入批次独立审计
+
+  - name: integration-package-update
+    category: maintain
+    role: role-c-kb-framework-admin
+    path: maintain/integration-package-update/SKILL.md
+    manifest: maintain/integration-package-update/manifest.yaml
+    triggers:
+      - 用户授意更新整合包
+      - 授权更新整合包
+      - 执行整合包同步
+      - 同步整合包
+      - 更新部署包
+      - 同步部署包
+      - apply integration package
+
+  - name: git-repository-management
+    category: maintain
+    role: role-c-kb-framework-admin
+    path: maintain/git-repository-management/SKILL.md
+    manifest: maintain/git-repository-management/manifest.yaml
+    triggers:
+      - git
+      - git仓库
+      - .gitignore
+      - 初始化仓库
+      - 提交
+      - commit
+      - 版本控制
+
+  - name: teaching-ppt-analysis
+    category: analyze
+    role: role-b-retrieval-calling
+    path: analyze/teaching-ppt-analysis/SKILL.md
+    manifest: analyze/teaching-ppt-analysis/manifest.yaml
+    triggers:
+      - PPT分析
+      - 课件分析
+      - 课堂投影
+      - 教学逻辑
+
+  - name: student-data-analysis
+    category: analyze
+    role: role-b-retrieval-calling
+    path: analyze/student-data-analysis/SKILL.md
+    manifest: analyze/student-data-analysis/manifest.yaml
+    triggers:
+      - SQL学生数据分析
+      - 学生成绩分析
+      - 作业分析
+      - 学生数据库分析
+      - 班级薄弱点
+      - 学生掌握度
+      - 单生期中知识点掌握
+      - 期中考试报告
+      - 期中报告
+      - 期中考试知识点掌握报告
+      - 座位号报告
+      - 按座位号生成报告
+      - 期中考掌握情况
+      - 学生知识点掌握情况
+      - 各知识点掌握情况
+      - STUDENT_DATA_DB_KEY
+      - 真实库密钥
+      - 学生数据密钥
+      - 考试小题分析
+      - 方法错误分析
+      - 答题卡分析
+      - 考试成绩分析
+      - 试卷答题卡成绩分析
+      - 失分分析
+      - 小题分分析
+
+  - name: physics-question-tutoring
+    category: learn
+    role: role-d-physics-learning
+    path: learn/physics-question-tutoring/SKILL.md
+    manifest: learn/physics-question-tutoring/manifest.yaml
+    triggers:
+      - 学生拍题
+      - 拍照识别并讲解
+      - 讲解这道题
+      - 题意确认
+      - 分层提示
+      - 物理题图片
+
+  - name: physics-diagram-toolkit
+    category: learn
+    role: role-d-physics-learning
+    path: learn/physics-diagram-toolkit/SKILL.md
+    manifest: learn/physics-diagram-toolkit/manifest.yaml
+    triggers:
+      - 物理示意图生成
+      - 原创物理图
+      - 原创物理示意图
+      - 题目情境图
+      - 答案解析图
+      - 原图受力批注
+      - 运动学批注
+      - 画受力图
+      - 受力箭头
+      - 坐标系图像
+      - 函数图
+      - 实验数据图
+      - 实验数据折线
+      - x-t/v-t/a-t/F-t 图
+      - 矢量图
+      - 轨迹图
+      - 图上批注
+      - 把受力图写入题库
+      - 把示意图放入解析
+      - 修复题库原图
+      - 写入题库详解
+      - 错误原图
+      - 题库图写回
+
+  - name: exercise-solution-curation
+    category: learn
+    role: role-d-physics-learning
+    path: learn/exercise-solution-curation/SKILL.md
+    manifest: learn/exercise-solution-curation/manifest.yaml
+    triggers:
+      - 校对题库题干答案详解
+      - 校对并修改题库
+      - 修改题干
+      - 修改题目解析
+      - 补写详解
+      - 修复答案解析不一致
+      - 题库解析维护
+      - 继续校对
+      - 继续校对题库
+      - Role D strong 校对题干答案详解
+      - 题库校对断点续跑
+      - 修复题目原图
+      - 修改 MC 解析
+      - review exercise answer
+      - modify question stem
+      - detailed solution
+      - modify MC analysis
+      - proofread question bank answer
+
+  - name: physics-knowledge-graph
+    category: learn
+    role: role-d-physics-learning
+    path: learn/physics-knowledge-graph/SKILL.md
+    manifest: learn/physics-knowledge-graph/manifest.yaml
+    triggers:
+      - 更新高中物理知识关系图谱
+      - 知识关系图谱维护
+      - 专题枢纽更新
+      - 图谱反向链接
+      - import handoff
+
+  - name: exercise-knowledge-tags
+    category: taxonomy
+    role: role-d-physics-learning
+    path: taxonomy/exercise-knowledge-tags/SKILL.md
+    manifest: taxonomy/exercise-knowledge-tags/manifest.yaml
+    triggers:
+      - 知识点标签
+      - 题库分类
+      - knowledge_points
+      - knowledge_point_ids
+      - ai_extra_tags
+      - 合并知识点标签
+      - 改名知识点标签
+      - 移动知识点标签

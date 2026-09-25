@@ -1,0 +1,4 @@
+interface:
+  display_name: "Electromagnetic Rod Problems"
+  short_description: "Summarize induction rod models and solving routines."
+  default_prompt: "整理单双杆/导体棒问题的知识点、模型分类、解题流程和易错点。"

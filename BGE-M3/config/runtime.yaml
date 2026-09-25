@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "path_ids": {
+    "source": "library.raw",
+    "environment": "rag.env",
+    "models": "rag.models",
+    "chunks": "rag.data",
+    "index": "rag.index",
+    "logs": "rag.logs"
+  }
+}

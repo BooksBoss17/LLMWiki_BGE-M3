@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "project": {
+    "name": "LLMWiki_BGE-M3",
+    "root_marker": "PROJECT_LAYOUT.yaml",
+    "description": "高中物理知识库四库统一路径契约"
+  },
+  "environment_overrides": {
+    "LLMWIKI_KB_ROOT": "project.root",
+    "LLMWIKI_MODEL_RUNTIME_ROOT": "skills.model-tools.runtime",
+    "LLMWIKI_INTEGRATION_SKILLS_ROOT": "integration.skills-mirror"
+  },
+  "paths": {
+    "project.root": {
+      "path": ".",
+      "kind": "project-root",
+      "git": "tracked"
+    },
+    "library.source": {
+      "path": "source-library",
+      "kind": "source-library",
+      "git": "metadata-only"
+    },
+    "library.raw": {
+      "path": "raw",
+      "kind": "knowledge-library",
+      "git": "tracked"
+    },
+    "library.wiki": {
+      "path": "LLMWiki",
+      "kind": "knowledge-library",
+      "git": "tracked"
+    },
+    "library.rag": {
+      "path": "BGE-M3",
+      "kind": "rag-library",
+      "git": "framework-only"
+    },
+    "library.sql": {
+      "path": "StudentDataSQL",
+      "kind": "structured-data-library",
+      "git": "framework-only"
+    },
+    "skills.root": {
+      "path": "skills",
+      "kind": "capability-layer",
+      "git": "tracked"
+    },
+    "skills.registry": {
+      "path": "skills/registry.yaml",
+      "kind": "registry",
+      "git": "tracked"
+    },
+    "skills.model-tools": {
+      "path": "skills/_shared/model-tools",
+      "kind": "shared-module",
+      "git": "framework-only"
+    },
+    "skills.model-tools.runtime": {
+      "path": "skills/_shared/model-tools/runtime",
+      "kind": "runtime",
+      "git": "ignored"
+    },
+    "skills.ops": {
+      "path": "skills/_ops",
+      "kind": "operations",
+      "git": "mixed"
+    },
+    "skills.ops.runtime": {
+      "path": "skills/_ops/runtime",
+      "kind": "runtime",
+      "git": "ignored"
+    },
+    "workspace.output": {
+      "path": "output",
+      "kind": "deliverables",
+      "git": "ignored"
+    },
+    "workspace.tmp": {
+      "path": "tmp",
+      "kind": "temporary-workspace",
+      "git": "ignored"
+    },
+    "helpers.codex": {
+      "path": ".codex/helpers",
+      "kind": "codex-adapter",
+      "git": "tracked"
+    },
+    "wiki.runtime": {
+      "path": "LLMWiki/runtime",
+      "kind": "runtime",
+      "git": "ignored"
+    },
+    "rag.runtime": {
+      "path": "BGE-M3/runtime",
+      "kind": "runtime",
+      "git": "ignored"
+    },
+    "rag.env": {
+      "path": "BGE-M3/runtime/env",
+      "kind": "runtime-env",
+      "git": "ignored"
+    },
+    "rag.models": {
+      "path": "BGE-M3/runtime/models",
+      "kind": "runtime-models",
+      "git": "ignored"
+    },
+    "rag.data": {
+      "path": "BGE-M3/runtime/data",
+      "kind": "runtime-data",
+      "git": "ignored"
+    },
+    "rag.index": {
+      "path": "BGE-M3/runtime/index",
+      "kind": "runtime-index",
+      "git": "ignored"
+    },
+    "rag.logs": {
+      "path": "BGE-M3/runtime/logs",
+      "kind": "runtime-logs",
+      "git": "ignored"
+    },
+    "sql.runtime": {
+      "path": "StudentDataSQL/runtime",
+      "kind": "runtime",
+      "git": "ignored"
+    },
+    "sql.db": {
+      "path": "StudentDataSQL/runtime/db",
+      "kind": "private-data",
+      "git": "ignored"
+    },
+    "sql.imports": {
+      "path": "StudentDataSQL/runtime/imports",
+      "kind": "private-data",
+      "git": "ignored"
+    },
+    "sql.exports": {
+      "path": "StudentDataSQL/runtime/exports",
+      "kind": "private-reports",
+      "git": "ignored"
+    },
+    "sql.backups": {
+      "path": "StudentDataSQL/runtime/backups",
+      "kind": "private-backups",
+      "git": "ignored"
+    },
+    "sql.logs": {
+      "path": "StudentDataSQL/runtime/logs",
+      "kind": "runtime-logs",
+      "git": "ignored"
+    },
+    "sql.exam-reports": {
+      "path": "StudentDataSQL/runtime/exam-reports",
+      "kind": "private-reports",
+      "git": "ignored"
+    },
+    "integration.skills-mirror": {
+      "path": "tmp/integration-skills-mirror",
+      "kind": "external-mirror",
+      "git": "external"
+    }
+  }
+}

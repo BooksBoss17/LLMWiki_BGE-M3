@@ -1,0 +1,2 @@
+exam_base,assessment_item_key,item_no,question_id,question_type,max_score,correct_answer,kp_id,kp_title,key_point,difficulty_point,wiki_path,method_tags_json,scoring_points_json,needs_review
+physics_2026_midterm,Q01,1,physics_2026_midterm_q01,choice,4,A,kp_force_analysis,受力分析,建立正确受力图并判断合力方向,区分支持力与摩擦力的方向,,[],[],1

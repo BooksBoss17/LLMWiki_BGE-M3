@@ -1,0 +1,53 @@
+name: exercise-solution-curation
+category: learn
+role: role-d-physics-learning
+version: 3.0.0
+status: active
+locked: true
+distribution: portable
+package_export: true
+description: 基于 question id、SHA-256 和固定 schema 的题库完整记录维护；strong curator 可修题干、答案、详解、题图和 ai_extra_tags
+triggers:
+  - 校对题库题干答案详解
+  - 修改题干
+  - 修改题目解析
+  - 补写详解
+  - 修复答案解析不一致
+  - 题库解析维护
+  - 继续校对
+  - 继续校对题库
+  - Role D strong 校对题干答案详解
+  - 题库校对断点续跑
+  - 修复题目原图
+  - 修改 MC 解析
+  - review exercise answer
+  - modify question stem
+  - detailed solution
+  - modify MC analysis
+  - proofread question bank answer
+entry_skill: SKILL.md
+scripts:
+  - path: scripts/curate_exercise.py
+    purpose: 校验 proposal、active v3 batch、独立审计、授权及全部相关哈希，生成 dry-run/apply receipt，并原子应用题干、答案、详解、assets 和媒体
+  - path: scripts/migrate_p0p1_batches_v3.py
+    purpose: 保持 833 条 queue ordinal，以当前题目哈希建立 batch v3 状态，并为 mission v2 源码、状态和 artifact 生成只读退役清单
+  - path: scripts/curation_evidence.py
+    purpose: 原图哈希去重、WMF 原生边界证据、8-12 图 VLM 分段、阻断和断点恢复
+  - path: scripts/materialize_docx_evidence.py
+    purpose: 最终任务仅从 confirmed ledger 将 DOCX 媒体按 SHA-256 回填为 LaTeX 或物理图
+runtime:
+  models: []
+  envs: []
+  requirements:
+    - ../_shared/requirements/requirements.txt
+load_policy:
+  default: read_skill_only
+  references: on_branch
+  scripts: call_only
+  models: never_inline
+authorization:
+  apply_requires: --teacher-authorized
+model_profiles:
+  default: weak
+  supported: [weak, strong]
+last_verified: 2026-07-23

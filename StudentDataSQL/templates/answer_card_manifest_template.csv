@@ -1,0 +1,2 @@
+assessment_id,class_id,student_id,seat_no,artifact_status,redacted_path,sha256,evidence_ref
+g2c01_physics_2026_midterm,g2c01,2025-2026-s2_g2c01_F_seat01,23,present,StudentDataSQL/runtime/imports/redacted_answer_cards/physics_2026_midterm/g2c01-seat23.png,sha256hex,answer_card:g2c01_physics_2026_midterm:2025-2026-s2_g2c01_F_seat01

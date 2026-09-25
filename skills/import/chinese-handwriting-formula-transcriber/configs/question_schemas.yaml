@@ -1,0 +1,48 @@
+q09:
+  type: single_choice_or_letter
+  allowed: [A, B, C, D]
+  min_final_confidence: 0.84
+  corrections:
+    "4": A
+    "△": A
+    "口": D
+
+q10:
+  type: two_short_words
+  min_final_confidence: 0.84
+  slots:
+    - allowed: [增大, 减小, 不变, 变大, 变小]
+    - allowed: [增大, 减小, 不变, 变大, 变小]
+  corrections:
+    工增大: 增大
+    工减小: 减小
+    己增大: 增大
+    已增大: 增大
+    己减小: 减小
+    已减小: 减小
+    增尺: 增大
+    减1: 减小
+    八: null
+    人: null
+
+q11:
+  type: numeric_unit_pair
+  min_final_confidence: 0.82
+  unit_candidates: [W, J, N, Pa]
+
+q12:
+  type: direction_and_choice
+  min_final_confidence: 0.82
+  directions: [向左, 向右, 向上, 向下, 左, 右, 上, 下]
+  choices: [A, B, C, D, AB, AC, AD, BC, BD, CD]
+  corrections:
+    向己: null
+    有右: null
+    x右: 向右
+    后: 右
+
+q13:
+  type: mixed_short_answer
+  min_final_confidence: 0.80
+  allow_machine_final: false
+  max_chars: 80

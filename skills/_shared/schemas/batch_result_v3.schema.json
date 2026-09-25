@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Batch result v3",
+  "type": "object",
+  "required": ["schema_version", "kind", "campaign_id", "batch_id", "run_id", "phase", "batch_card_sha256", "status", "producer", "items"],
+  "properties": {
+    "schema_version": {"const": 3},
+    "kind": {"const": "batch_result"},
+    "campaign_id": {"type": "string"},
+    "batch_id": {"type": "string"},
+    "run_id": {"type": "string"},
+    "phase": {"enum": ["executor", "auditor", "repair", "source"]},
+    "batch_card_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "status": {"enum": ["pending", "submitted"]},
+    "producer": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/producer"}
+      ]
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "required": ["question_id"],
+        "properties": {
+          "question_id": {"type": "string", "minLength": 1},
+          "status": {"enum": ["pending", "proposed", "source_mapped", "source_blocked", "unresolved", "runtime_failed"]},
+          "verdict": {"enum": ["pending", "passed", "failed"]},
+          "source_ref": {"type": ["object", "null"]},
+          "source_slice_ref": {
+            "oneOf": [
+              {"type": "null"},
+              {"$ref": "#/$defs/file_ref"}
+            ]
+          },
+          "evidence": {
+            "oneOf": [
+              {"type": "null"},
+              {"$ref": "#/$defs/file_ref"}
+            ]
+          },
+          "defects": {"type": "array", "items": {"type": "string"}}
+        },
+        "allOf": [
+          {
+            "if": {"properties": {"status": {"const": "source_mapped"}}, "required": ["status"]},
+            "then": {"required": ["source_ref", "source_slice_ref", "evidence"]}
+          }
+        ],
+        "oneOf": [
+          {"required": ["status"]},
+          {"required": ["verdict"]}
+        ]
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "pending"}}, "required": ["status"]},
+      "then": {"properties": {"producer": {"type": "null"}}}
+    },
+    {
+      "if": {"properties": {"status": {"const": "submitted"}}, "required": ["status"]},
+      "then": {"properties": {"producer": {"$ref": "#/$defs/producer"}}}
+    }
+  ],
+  "$defs": {
+    "file_ref": {
+      "type": "object",
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "producer": {
+      "type": "object",
+      "required": ["worker_instance_id", "execution_mode", "role"],
+      "properties": {
+        "worker_instance_id": {"type": "string", "minLength": 1},
+        "execution_mode": {"const": "isolated_worker"},
+        "role": {"enum": ["executor", "auditor", "repair", "source"]}
+      },
+      "additionalProperties": false
+    }
+  }
+}

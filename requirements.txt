@@ -1,0 +1,20 @@
+# LLMWiki_BGE-M3 — RAG 子系统依赖（Python 3.11 / 3.12，Windows x64）
+# 版本与原作者验证过的运行环境（BGE-M3/runtime/env）一致。
+#
+# GPU 说明：RAG 入库/检索（BGE-M3 向量化）需要 NVIDIA GPU（CUDA 12.8 轮子）。
+# 原版检索管线的多进程编码在无 CUDA 设备时会失败，因此默认安装 GPU 版 torch。
+#
+# 可选模型下载工具依赖 huggingface-hub（下方已包含）。
+
+--extra-index-url https://download.pytorch.org/whl/cu128
+
+torch==2.11.0+cu128
+FlagEmbedding==1.4.0
+faiss-cpu==1.14.3
+numpy==2.4.6
+transformers==5.12.1
+tokenizers==0.22.2
+sentencepiece==0.2.1
+huggingface-hub==1.20.1
+scikit-learn==1.9.0
+scipy==1.17.1
